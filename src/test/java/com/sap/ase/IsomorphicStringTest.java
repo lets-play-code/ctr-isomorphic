@@ -9,7 +9,8 @@ public class IsomorphicStringTest {
 
 	@Test
 	public void testName() throws Exception {
-	    assertTrue(true, "start point");
+		boolean result = IsomorphicChecker.foo("egg", "add");
+	    assertTrue(result, "start point");
 
 	}
 }
