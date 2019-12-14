@@ -1,7 +1,7 @@
 package com.sap.ase;
 
 public class IsomorphicChecker {
-    public static boolean foo(String s, String t) {
+    public static boolean comparePattern(String s, String t) {
         if (s == "egg" && t == "add")
             return true;
         else

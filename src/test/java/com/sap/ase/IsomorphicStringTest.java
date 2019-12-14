@@ -11,14 +11,14 @@ public class IsomorphicStringTest {
 
 	@Test
 	public void testSame() throws Exception {
-		boolean result = foo("egg", "add");
+		boolean result = comparePattern("egg", "add");
 	    assertTrue(result, "start point");
 
 	}
 
 	@Test
 	public void testDiff() throws Exception {
-		boolean result = foo("egg", "abc");
+		boolean result = comparePattern("egg", "abc");
 		assertFalse(result, "should not matched");
 	}
 }
