@@ -3,14 +3,22 @@ package com.sap.ase;
 
 import org.junit.jupiter.api.Test;
 
+import static com.sap.ase.IsomorphicChecker.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class IsomorphicStringTest {
 
 	@Test
 	public void testName() throws Exception {
-		boolean result = IsomorphicChecker.foo("egg", "add");
+		boolean result = foo("egg", "add");
 	    assertTrue(result, "start point");
 
+	}
+
+	@Test
+	public void testNotIso() throws Exception {
+		boolean result = foo("egg", "abc");
+		assertFalse(result, "should not matched");
 	}
 }
