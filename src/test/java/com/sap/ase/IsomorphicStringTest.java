@@ -27,4 +27,9 @@ public class IsomorphicStringTest {
 		boolean result = comparePattern("egg", "abcd");
 		assertFalse(result);
 	}
+	@Test
+	public void testNull() {
+		boolean result = comparePattern(null, "abcd");
+		assertFalse(result);
+	}
 }
