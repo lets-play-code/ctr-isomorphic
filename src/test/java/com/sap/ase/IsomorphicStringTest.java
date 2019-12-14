@@ -32,4 +32,13 @@ public class IsomorphicStringTest {
 		boolean result = comparePattern(null, "abcd");
 		assertFalse(result);
 	}
+
+	@Test
+	public void testAABB() {
+		boolean result = comparePattern("aa", "bb");
+		assertTrue(result);
+	}
+
+
+
 }

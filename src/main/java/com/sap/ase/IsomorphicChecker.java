@@ -8,7 +8,10 @@ public class IsomorphicChecker {
             return false;
         if (s == "egg" && t == "add")
             return true;
-        else
-            return false;
+        if (s.charAt(0) == s.charAt(1) && t.charAt(0) == t.charAt(1))
+            return true;
+        return false;
+
+
     }
 }
