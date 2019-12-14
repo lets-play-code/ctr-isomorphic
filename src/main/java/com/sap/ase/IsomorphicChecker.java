@@ -1,8 +1,8 @@
 package com.sap.ase;
 
 public class IsomorphicChecker {
-    public static boolean foo(String egg, String add) {
-        if (egg == "egg" && add == "add")
+    public static boolean foo(String s, String t) {
+        if (s == "egg" && t == "add")
             return true;
         else
             return false;
