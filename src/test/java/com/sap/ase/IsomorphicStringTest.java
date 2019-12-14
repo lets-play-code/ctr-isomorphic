@@ -40,5 +40,10 @@ public class IsomorphicStringTest {
 	}
 
 
+	@Test
+	public void testAABC() {
+		boolean result = comparePattern("aa", "bc");
+		assertFalse(result);
+	}
 
 }
