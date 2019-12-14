@@ -10,6 +10,11 @@ public class IsomorphicChecker {
             return true;
         if (s.charAt(0) == s.charAt(1) && t.charAt(0) == t.charAt(1))
             return true;
+
+        for(int i=0; i< s.length()-1; i++){
+            if (s.charAt(i) == s.charAt(i+1) && t.charAt(i) == t.charAt(i+1))
+                return true;
+        }
         return false;
 
 
