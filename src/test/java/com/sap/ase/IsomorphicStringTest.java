@@ -21,4 +21,10 @@ public class IsomorphicStringTest {
 		boolean result = comparePattern("egg", "abc");
 		assertFalse(result, "should not matched");
 	}
+
+	@Test
+	public void testLength() {
+		boolean result = comparePattern("egg", "abcd");
+		assertFalse(result);
+	}
 }
