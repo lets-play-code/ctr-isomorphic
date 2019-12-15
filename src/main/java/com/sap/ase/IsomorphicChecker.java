@@ -8,14 +8,10 @@ public class IsomorphicChecker {
             return false;
         for(int i=0; i< s.length()-1; i++){
             for (int j = i+1; j < s.length(); j++) {
-                if (isNotSameAt(s, t, i, j)) return false;
+                if (isSameChar(s, i, j) == !isSameChar(t, i, j)) return false;
             }
         }
         return true;
-    }
-
-    private static boolean isNotSameAt(String s, String t, int i, int i1) {
-        return isSameChar(s, i, i1) == !isSameChar(t, i, i1);
     }
 
     private static boolean isSameChar(String s, int i, int i1) {
