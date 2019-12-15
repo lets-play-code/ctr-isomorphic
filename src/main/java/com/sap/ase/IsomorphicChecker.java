@@ -10,10 +10,7 @@ public class IsomorphicChecker {
             return true;
 
         for(int i=0; i< s.length()-1; i++){
-            if (s.charAt(i) == s.charAt(i+1) && t.charAt(i) != t.charAt(i+1))
-                return false;
-            if (s.charAt(i) != s.charAt(i+1) && t.charAt(i) == t.charAt(i+1))
-                return false;
+            if (isSameToNext(s, t, i, 1)) return false;
             if (i < s.length() - 2) {
                 if (s.charAt(i) == s.charAt(i + 2) && t.charAt(i) != t.charAt(i + 2))
                     return false;
@@ -25,5 +22,13 @@ public class IsomorphicChecker {
         return false;
 
 
+    }
+
+    private static boolean isSameToNext(String s, String t, int i, int i2) {
+        if (s.charAt(i) == s.charAt(i + i2) && t.charAt(i) != t.charAt(i + i2))
+            return true;
+        if (s.charAt(i) != s.charAt(i + i2) && t.charAt(i) == t.charAt(i + i2))
+            return true;
+        return false;
     }
 }
