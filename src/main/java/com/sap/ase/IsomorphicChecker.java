@@ -10,9 +10,11 @@ public class IsomorphicChecker {
             return true;
 
         for(int i=0; i< s.length()-1; i++){
-            if (isSameToNext(s, t, i, 1)) return false;
-            if (i < s.length() - 2) {
-                if (isSameToNext(s, t, i, 2)) return false;
+            for (int j = 1; j < s.length(); j++) {
+                if (isSameToNext(s, t, i, j)) return false;
+                if (i < s.length() - 2) {
+                    if (isSameToNext(s, t, i, j)) return false;
+                }
             }
             return true;
         }
