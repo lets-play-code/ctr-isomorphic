@@ -10,10 +10,6 @@ public class IsomorphicChecker {
             for (int j = i+1; j < s.length(); j++) {
                 if (isNotSameAt(s, t, i, j)) return false;
             }
-            if (isNotSameAt(s, t, i, i + 1)) return false;
-            if (i < s.length() - 2) {
-                if (isNotSameAt(s, t, i, i + 2)) return false;
-            }
         }
         return true;
     }
