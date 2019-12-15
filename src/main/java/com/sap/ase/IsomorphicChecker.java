@@ -7,6 +7,9 @@ public class IsomorphicChecker {
         if (s.length() != t.length())
             return false;
         for(int i=0; i< s.length()-1; i++){
+            for (int j = i+1; j < s.length(); j++) {
+                if (isNotSameAt(s, t, i, j)) return false;
+            }
             if (isNotSameAt(s, t, i, i + 1)) return false;
             if (i < s.length() - 2) {
                 if (isNotSameAt(s, t, i, i + 2)) return false;
