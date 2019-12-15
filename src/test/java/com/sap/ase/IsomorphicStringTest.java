@@ -24,6 +24,7 @@ public class IsomorphicStringTest {
 		return Stream.of(
 				Arguments.of(null, "abcd", false),
 				Arguments.of("egg", "abcd", false),
+				Arguments.of("aa", "bb", true),
 				Arguments.of("egg", "add", true)
 		);
 	}
