@@ -17,7 +17,6 @@ public class IsomorphicStringTest {
 	@MethodSource("args")
 	public void testSame(String s1, String s2, boolean expected) throws Exception {
 		assertEquals(expected, comparePattern(s1, s2));
-
 	}
 
 	static Stream<Arguments> args () {
