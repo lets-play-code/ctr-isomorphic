@@ -21,18 +21,11 @@ public class IsomorphicStringTest {
 	}
 
 	static Stream<Arguments> args () {
-	    return Stream.of(
-	    		Arguments.of("egg", "add", true)
+		return Stream.of(
+				Arguments.of(null, "abcd", false),
+				Arguments.of("egg", "abcd", false),
+				Arguments.of("egg", "add", true)
 		);
-	}
-
-	@Test
-	public void testLength() {
-		assertFalse(comparePattern("egg", "abcd"));
-	}
-	@Test
-	public void testNull() {
-		assertFalse(comparePattern(null, "abcd"));
 	}
 
 	@Test
