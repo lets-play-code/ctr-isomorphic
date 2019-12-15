@@ -22,10 +22,7 @@ public class IsomorphicChecker {
                 if (s.charAt(i) != s.charAt(i + 2) && t.charAt(i) == t.charAt(i + 2))
                     return false;
             }
-            return true;
         }
-        return false;
-
-
+        return true;
     }
 }

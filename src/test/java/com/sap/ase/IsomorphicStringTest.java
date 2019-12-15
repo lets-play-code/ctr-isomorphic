@@ -15,10 +15,10 @@ public class IsomorphicStringTest {
 
 	}
 
-//	@Test
-//	public void testDiff() throws Exception {
-//		assertFalse(comparePattern("egg", "abc");, "should not matched");
-//	}
+	@Test
+	public void testDiff() throws Exception {
+		assertFalse(comparePattern("egg", "abc"));
+	}
 
 	@Test
 	public void testLength() {
