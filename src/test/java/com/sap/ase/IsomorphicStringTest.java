@@ -51,4 +51,8 @@ public class IsomorphicStringTest {
 	public void testADA_BOB() {
 		assertTrue(comparePattern("ada", "bob"));
 	}
+	@Test
+	public void testADA_TOP() {
+		assertFalse(comparePattern("ada", "tom"));
+	}
 }
