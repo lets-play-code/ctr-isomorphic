@@ -27,14 +27,11 @@ public class IsomorphicStringTest {
 				Arguments.of("aa", "bb", true),
 				Arguments.of("aa", "bc", false),
 				Arguments.of("ab", "cd", true),
+				Arguments.of("abb", "cdd", true),
 				Arguments.of("egg", "add", true)
 		);
 	}
 
-	@Test
-	public void testABCD() {
-		assertTrue(comparePattern("ab", "cd"));
-	}
 	@Test
 	public void testABB_CDD() {
 		assertTrue(comparePattern("abb", "cdd"));
