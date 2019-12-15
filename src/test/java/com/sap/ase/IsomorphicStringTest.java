@@ -51,5 +51,6 @@ public class IsomorphicStringTest {
 	@Test
 	public void testDiff() {
 		assertFalse(comparePattern("egg", "abc"));
+		assertFalse(comparePattern("aassaa", "ddaabb"));
 	}
 }
