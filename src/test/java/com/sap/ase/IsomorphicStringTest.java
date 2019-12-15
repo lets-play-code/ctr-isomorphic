@@ -25,14 +25,11 @@ public class IsomorphicStringTest {
 				Arguments.of(null, "abcd", false),
 				Arguments.of("egg", "abcd", false),
 				Arguments.of("aa", "bb", true),
+				Arguments.of("aa", "bc", false),
 				Arguments.of("egg", "add", true)
 		);
 	}
 
-	@Test
-	public void testAABB() {
-		assertTrue(comparePattern("aa", "bb"));
-	}
 	@Test
 	public void testAABC() {
 		assertFalse(comparePattern("aa", "bc"));
