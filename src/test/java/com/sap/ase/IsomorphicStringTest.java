@@ -28,18 +28,12 @@ public class IsomorphicStringTest {
 				Arguments.of("aa", "bc", false),
 				Arguments.of("ab", "cd", true),
 				Arguments.of("abb", "cdd", true),
+				Arguments.of("ada", "bob", true),
+				Arguments.of("ada", "bob", true),
 				Arguments.of("egg", "add", true)
 		);
 	}
 
-	@Test
-	public void testABB_CDD() {
-		assertTrue(comparePattern("abb", "cdd"));
-	}
-	@Test
-	public void testADA_BOB() {
-		assertTrue(comparePattern("ada", "bob"));
-	}
 	@Test
 	public void testADA_TOP() {
 		assertFalse(comparePattern("ada", "tom"));
