@@ -6,9 +6,6 @@ public class IsomorphicChecker {
             return false;
         if (s.length() != t.length())
             return false;
-        if (s == "egg" && t == "add")
-            return true;
-
         for(int i=0; i< s.length()-1; i++){
             if (s.charAt(i) == s.charAt(i+1) && t.charAt(i) != t.charAt(i+1))
                 return false;
