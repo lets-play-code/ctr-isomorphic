@@ -47,4 +47,8 @@ public class IsomorphicStringTest {
 	public void testABB_CDD() {
 		assertTrue(comparePattern("abb", "cdd"));
 	}
+	@Test
+	public void testADA_BOB() {
+		assertTrue(comparePattern("ada", "bob"));
+	}
 }
