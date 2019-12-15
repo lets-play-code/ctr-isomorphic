@@ -29,7 +29,7 @@ public class IsomorphicStringTest {
 				Arguments.of("ab", "cd", true),
 				Arguments.of("abb", "cdd", true),
 				Arguments.of("ada", "bob", true),
-				Arguments.of("ada", "bob", true),
+				Arguments.of("ada", "tom", false),
 				Arguments.of("egg", "add", true)
 		);
 	}
