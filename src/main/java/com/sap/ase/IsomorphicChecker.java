@@ -15,6 +15,10 @@ public class IsomorphicChecker {
     }
 
     private static boolean isNotSameAt(String s, String t, int i, int i1) {
-        return s.charAt(i) == s.charAt(i1) && t.charAt(i) != t.charAt(i1) || s.charAt(i) != s.charAt(i1) && t.charAt(i) == t.charAt(i1);
+        return isSameChar(s, i, i1) && t.charAt(i) != t.charAt(i1) || s.charAt(i) != s.charAt(i1) && isSameChar(t, i, i1);
+    }
+
+    private static boolean isSameChar(String s, int i, int i1) {
+        return s.charAt(i) == s.charAt(i1);
     }
 }
