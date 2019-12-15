@@ -2,17 +2,28 @@ package com.sap.ase;
 
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 import static com.sap.ase.IsomorphicChecker.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class IsomorphicStringTest {
 
-	@Test
-	public void testSame() throws Exception {
-		assertTrue(comparePattern("egg", "add"), "start point");
+	@ParameterizedTest
+	@MethodSource("args")
+	public void testSame(String s1, String s2, boolean expected) throws Exception {
+		assertEquals(expected, comparePattern(s1, s2));
 
+	}
+
+	static Stream<Arguments> args () {
+	    return Stream.of(
+	    		Arguments.of("egg", "add", true)
+		);
 	}
 
 	@Test
