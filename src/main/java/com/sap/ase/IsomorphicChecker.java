@@ -12,10 +12,7 @@ public class IsomorphicChecker {
         for(int i=0; i< s.length()-1; i++){
             if (isSameToNext(s, t, i, 1)) return false;
             if (i < s.length() - 2) {
-                if (s.charAt(i) == s.charAt(i + 2) && t.charAt(i) != t.charAt(i + 2))
-                    return false;
-                if (s.charAt(i) != s.charAt(i + 2) && t.charAt(i) == t.charAt(i + 2))
-                    return false;
+                if (isSameToNext(s, t, i, 2)) return false;
             }
             return true;
         }
