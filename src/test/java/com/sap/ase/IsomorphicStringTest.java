@@ -11,43 +11,36 @@ public class IsomorphicStringTest {
 
 	@Test
 	public void testSame() throws Exception {
-		boolean result = comparePattern("egg", "add");
-	    assertTrue(result, "start point");
+		assertTrue(comparePattern("egg", "add"), "start point");
 
 	}
 
 //	@Test
 //	public void testDiff() throws Exception {
-//		boolean result = comparePattern("egg", "abc");
-//		assertFalse(result, "should not matched");
+//		assertFalse(comparePattern("egg", "abc");, "should not matched");
 //	}
 
 	@Test
 	public void testLength() {
-		boolean result = comparePattern("egg", "abcd");
-		assertFalse(result);
+		assertFalse(comparePattern("egg", "abcd"));
 	}
 	@Test
 	public void testNull() {
-		boolean result = comparePattern(null, "abcd");
-		assertFalse(result);
+		assertFalse(comparePattern(null, "abcd"));
 	}
 
 	@Test
 	public void testAABB() {
-		boolean result = comparePattern("aa", "bb");
-		assertTrue(result);
+		assertTrue(comparePattern("aa", "bb"));
 	}
 
 
 	@Test
 	public void testAABC() {
-		boolean result = comparePattern("aa", "bc");
-		assertFalse(result);
+		assertFalse(comparePattern("aa", "bc"));
 	}
 	@Test
 	public void testABCD() {
-		boolean result = comparePattern("ab", "cd");
-		assertTrue(result);
+		assertTrue(comparePattern("ab", "cd"));
 	}
 }
