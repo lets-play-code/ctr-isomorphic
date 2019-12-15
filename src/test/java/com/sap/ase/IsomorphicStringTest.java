@@ -33,9 +33,4 @@ public class IsomorphicStringTest {
 				Arguments.of("egg", "add", true)
 		);
 	}
-
-	@Test
-	public void testDiff() {
-		assertFalse(comparePattern("egg", "abc"));
-	}
 }
