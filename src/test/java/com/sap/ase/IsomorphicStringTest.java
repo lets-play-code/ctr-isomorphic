@@ -16,11 +16,6 @@ public class IsomorphicStringTest {
 	}
 
 	@Test
-	public void testDiff() throws Exception {
-		assertFalse(comparePattern("egg", "abc"));
-	}
-
-	@Test
 	public void testLength() {
 		assertFalse(comparePattern("egg", "abcd"));
 	}
@@ -33,8 +28,6 @@ public class IsomorphicStringTest {
 	public void testAABB() {
 		assertTrue(comparePattern("aa", "bb"));
 	}
-
-
 	@Test
 	public void testAABC() {
 		assertFalse(comparePattern("aa", "bc"));
@@ -54,5 +47,9 @@ public class IsomorphicStringTest {
 	@Test
 	public void testADA_TOP() {
 		assertFalse(comparePattern("ada", "tom"));
+	}
+	@Test
+	public void testDiff() {
+		assertFalse(comparePattern("egg", "abc"));
 	}
 }
