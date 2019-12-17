@@ -13,8 +13,8 @@ public class IsomorphicChecker {
         char[] tArray = t.toCharArray();
 
         for (int i = 0; i < sArray.length; i++) {
-            char sChar = sArray[i];
-            char tChar = tArray[i];
+            char sChar = s.charAt(i);
+            char tChar = t.charAt(i);
 
             if (charMapS2T.get(sChar) != null && !charMapS2T.get(sChar).equals(tChar)) {
                 return false;
