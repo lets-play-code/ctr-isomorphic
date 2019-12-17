@@ -12,7 +12,7 @@ public class IsomorphicChecker {
         char[] sArray = s.toCharArray();
         char[] tArray = t.toCharArray();
 
-        for (int i = 0; i < sArray.length; i++) {
+        for (int i = 0; i < s.length(); i++) {
             char sChar = s.charAt(i);
             char tChar = t.charAt(i);
 
