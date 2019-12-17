@@ -7,7 +7,7 @@ public class IsomorphicChecker {
     public boolean isIsomorphic(String s, String t) {
         if (s == null || t == null)
             return false;
-        if (s == t || s.equals(t))
+        if (s.equals(t))
             return true;
 
         if (s.length() != t.length())
