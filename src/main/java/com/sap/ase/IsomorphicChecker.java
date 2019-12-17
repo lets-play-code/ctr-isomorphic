@@ -31,11 +31,11 @@ public class IsomorphicChecker {
             return oneWayBound(sChar, tChar, oneWayMapping) && oneWayBound(tChar, sChar, anotherWayMapping);
         }
 
-        private boolean oneWayBound(char sChar, char tChar, Map<Character, Character> charMapS2T) {
-            if (charMapS2T.get(sChar) != null && charMapS2T.get(sChar) != tChar) {
+        private boolean oneWayBound(char sChar, char tChar, Map<Character, Character> charMapping) {
+            if (charMapping.containsKey(sChar) && charMapping.get(sChar) != tChar) {
                 return false;
             }
-            charMapS2T.put(sChar, tChar);
+            charMapping.put(sChar, tChar);
             return true;
         }
     }
