@@ -32,7 +32,7 @@ public class IsomorphicChecker {
         }
 
         private boolean oneWayBound(Character sChar, Character tChar, Map<Character, Character> charMapS2T) {
-            if (charMapS2T.get(sChar) != null && !charMapS2T.get(sChar).equals(tChar)) {
+            if (charMapS2T.get(sChar) != null && charMapS2T.get(sChar) != tChar) {
                 return false;
             }
             charMapS2T.put(sChar, tChar);
