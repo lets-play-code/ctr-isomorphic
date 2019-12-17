@@ -7,12 +7,8 @@ public class IsomorphicChecker {
     public boolean isIsomorphic(String s, String t) {
         if (!valid(s, t)) return false;
         CharacterBinding characterBinding = new CharacterBinding();
-
         for (int i = 0; i < s.length(); i++) {
-            Character sChar = s.charAt(i);
-            Character tChar = t.charAt(i);
-
-            if (!characterBinding.isBound(sChar, tChar)) return false;
+            if (!characterBinding.isBound(s.charAt(i), t.charAt(i))) return false;
         }
         return true;
     }
