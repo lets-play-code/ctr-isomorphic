@@ -9,8 +9,6 @@ public class IsomorphicChecker {
 
         Map<Character, Character> charMapS2T = new HashMap<>();
         Map<Character, Character> charMapT2S = new HashMap<>();
-        char[] sArray = s.toCharArray();
-        char[] tArray = t.toCharArray();
 
         for (int i = 0; i < s.length(); i++) {
             char sChar = s.charAt(i);
