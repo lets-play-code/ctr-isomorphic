@@ -5,12 +5,7 @@ import java.util.Map;
 
 public class IsomorphicChecker {
     public boolean isIsomorphic(String s, String t) {
-        if (s == null || t == null) {
-            return false;
-        }
-        if (s.length() != t.length()) {
-            return false;
-        }
+        if (!valid(s, t)) return false;
 
         Map<String, String> charMapS2T = new HashMap<>();
         Map<String, String> charMapT2S = new HashMap<>();
@@ -32,6 +27,16 @@ public class IsomorphicChecker {
                 charMapS2T.put(String.valueOf(sChar), String.valueOf(tChar));
                 charMapT2S.put(String.valueOf(tChar), String.valueOf(sChar));
             }
+        }
+        return true;
+    }
+
+    private boolean valid(String s, String t) {
+        if (s == null || t == null) {
+            return false;
+        }
+        if (s.length() != t.length()) {
+            return false;
         }
         return true;
     }
