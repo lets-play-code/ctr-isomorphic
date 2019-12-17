@@ -7,6 +7,19 @@ public class IsomorphicChecker {
     class CharacterBinding {
         Map<Character, Character> charMapS2T = new HashMap<>();
         Map<Character, Character> charMapT2S = new HashMap<>();
+
+        private boolean isBound(Character sChar, Character tChar) {
+            if (charMapS2T.get(sChar) != null && !charMapS2T.get(sChar).equals(tChar)) {
+                return true;
+            }
+            if (charMapT2S.get(tChar) != null && !charMapT2S.get(tChar).equals(sChar)) {
+                return true;
+            }
+
+            charMapS2T.put(sChar, tChar);
+            charMapT2S.put(tChar, sChar);
+            return false;
+        }
     }
 
     public boolean isIsomorphic(String s, String t) {
@@ -17,22 +30,9 @@ public class IsomorphicChecker {
             Character sChar = s.charAt(i);
             Character tChar = t.charAt(i);
 
-            if (isBinded(characterBinding, sChar, tChar)) return false;
+            if (characterBinding.isBound(sChar, tChar)) return false;
         }
         return true;
-    }
-
-    private boolean isBinded(CharacterBinding characterBinding, Character sChar, Character tChar) {
-        if (characterBinding.charMapS2T.get(sChar) != null && !characterBinding.charMapS2T.get(sChar).equals(tChar)) {
-            return true;
-        }
-        if (characterBinding.charMapT2S.get(tChar) != null && !characterBinding.charMapT2S.get(tChar).equals(sChar)) {
-            return true;
-        }
-
-        characterBinding.charMapS2T.put(sChar, tChar);
-        characterBinding.charMapT2S.put(tChar, sChar);
-        return false;
     }
 
     private boolean valid(String s, String t) {
