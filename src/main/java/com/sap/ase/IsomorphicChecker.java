@@ -24,11 +24,11 @@ public class IsomorphicChecker {
     }
 
     static class CharacterBinding {
-        Map<Character, Character> charMapS2T = new HashMap<>();
+        Map<Character, Character> oneWayMapping = new HashMap<>();
         Map<Character, Character> charMapT2S = new HashMap<>();
 
         private boolean isBound(Character sChar, Character tChar) {
-            return oneWayBound(sChar, tChar, charMapS2T) && oneWayBound(tChar, sChar, charMapT2S);
+            return oneWayBound(sChar, tChar, oneWayMapping) && oneWayBound(tChar, sChar, charMapT2S);
         }
 
         private boolean oneWayBound(Character sChar, Character tChar, Map<Character, Character> charMapS2T) {
