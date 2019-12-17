@@ -17,17 +17,22 @@ public class IsomorphicChecker {
             Character sChar = s.charAt(i);
             Character tChar = t.charAt(i);
 
-            if (characterBinding.charMapS2T.get(sChar) != null && !characterBinding.charMapS2T.get(sChar).equals(tChar)) {
-                return false;
-            }
-            if (characterBinding.charMapT2S.get(tChar) != null && !characterBinding.charMapT2S.get(tChar).equals(sChar)) {
-                return false;
-            }
-
-            characterBinding.charMapS2T.put(sChar, tChar);
-            characterBinding.charMapT2S.put(tChar, sChar);
+            if (isBinded(characterBinding, sChar, tChar)) return false;
         }
         return true;
+    }
+
+    private boolean isBinded(CharacterBinding characterBinding, Character sChar, Character tChar) {
+        if (characterBinding.charMapS2T.get(sChar) != null && !characterBinding.charMapS2T.get(sChar).equals(tChar)) {
+            return true;
+        }
+        if (characterBinding.charMapT2S.get(tChar) != null && !characterBinding.charMapT2S.get(tChar).equals(sChar)) {
+            return true;
+        }
+
+        characterBinding.charMapS2T.put(sChar, tChar);
+        characterBinding.charMapT2S.put(tChar, sChar);
+        return false;
     }
 
     private boolean valid(String s, String t) {
