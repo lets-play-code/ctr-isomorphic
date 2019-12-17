@@ -5,13 +5,16 @@ import java.util.Map;
 
 public class IsomorphicChecker {
     public boolean isIsomorphic(String s, String t) {
-        if (s == null || t == null)
+        if (s == null || t == null) {
             return false;
-        if (s.equals(t))
+        }
+        if (s.equals(t)) {
             return true;
+        }
 
-        if (s.length() != t.length())
+        if (s.length() != t.length()) {
             return false;
+        }
 
         Map<String, String> charMapS2T = new HashMap<>();
         Map<String, String> charMapT2S = new HashMap<>();
