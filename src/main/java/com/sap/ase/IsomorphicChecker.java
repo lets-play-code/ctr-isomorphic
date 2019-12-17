@@ -27,8 +27,8 @@ public class IsomorphicChecker {
         Map<Character, Character> oneWayMapping = new HashMap<>();
         Map<Character, Character> anotherWayMapping = new HashMap<>();
 
-        private boolean isBound(Character sChar, Character tChar) {
-            return isOneWayMapping(sChar, tChar, oneWayMapping) && isOneWayMapping(tChar, sChar, anotherWayMapping);
+        private boolean isBound(Character from, Character to) {
+            return isOneWayMapping(from, to, oneWayMapping) && isOneWayMapping(to, from, anotherWayMapping);
         }
 
         private boolean isOneWayMapping(char from, char to, Map<Character, Character> charMapping) {
