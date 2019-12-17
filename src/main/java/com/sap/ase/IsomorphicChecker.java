@@ -8,10 +8,6 @@ public class IsomorphicChecker {
         if (s == null || t == null) {
             return false;
         }
-        if (s.equals(t)) {
-            return true;
-        }
-
         if (s.length() != t.length()) {
             return false;
         }
