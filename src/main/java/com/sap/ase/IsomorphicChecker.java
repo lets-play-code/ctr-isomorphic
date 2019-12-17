@@ -10,15 +10,15 @@ public class IsomorphicChecker {
 
         private boolean isBound(Character sChar, Character tChar) {
             if (charMapS2T.get(sChar) != null && !charMapS2T.get(sChar).equals(tChar)) {
-                return true;
+                return false;
             }
             if (charMapT2S.get(tChar) != null && !charMapT2S.get(tChar).equals(sChar)) {
-                return true;
+                return false;
             }
 
             charMapS2T.put(sChar, tChar);
             charMapT2S.put(tChar, sChar);
-            return false;
+            return true;
         }
     }
 
@@ -30,7 +30,7 @@ public class IsomorphicChecker {
             Character sChar = s.charAt(i);
             Character tChar = t.charAt(i);
 
-            if (characterBinding.isBound(sChar, tChar)) return false;
+            if (!characterBinding.isBound(sChar, tChar)) return false;
         }
         return true;
     }
