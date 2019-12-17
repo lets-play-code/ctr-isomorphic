@@ -13,6 +13,16 @@ public class IsomorphicChecker {
         return true;
     }
 
+    private boolean valid(String s, String t) {
+        if (s == null || t == null) {
+            return false;
+        }
+        if (s.length() != t.length()) {
+            return false;
+        }
+        return true;
+    }
+
     static class CharacterBinding {
         Map<Character, Character> charMapS2T = new HashMap<>();
         Map<Character, Character> charMapT2S = new HashMap<>();
@@ -28,15 +38,5 @@ public class IsomorphicChecker {
             charMapS2T.put(sChar, tChar);
             return true;
         }
-    }
-
-    private boolean valid(String s, String t) {
-        if (s == null || t == null) {
-            return false;
-        }
-        if (s.length() != t.length()) {
-            return false;
-        }
-        return true;
     }
 }
