@@ -16,23 +16,19 @@ public class IsomorphicChecker {
             char sChar = sArray[i];
             char tChar = tArray[i];
 
-            if (charMapS2T.get(charToString(sChar)) != null && !charMapS2T.get(charToString(sChar)).equals(charToString(tChar))) {
+            if (charMapS2T.get(sChar) != null && !charMapS2T.get(sChar).equals(tChar)) {
                 return false;
             }
-            if (charMapT2S.get(charToString(tChar)) != null && !charMapT2S.get(charToString(tChar)).equals(charToString(sChar))) {
+            if (charMapT2S.get(tChar) != null && !charMapT2S.get(tChar).equals(sChar)) {
                 return false;
             }
 
-            if (charMapS2T.get(charToString(sChar)) == null) {
-                charMapS2T.put(charToString(sChar), charToString(tChar));
-                charMapT2S.put(charToString(tChar), charToString(sChar));
+            if (charMapS2T.get(sChar) == null) {
+                charMapS2T.put(sChar, tChar);
+                charMapT2S.put(tChar, sChar);
             }
         }
         return true;
-    }
-
-    private Character charToString(char sChar) {
-        return sChar;
     }
 
     private boolean valid(String s, String t) {
