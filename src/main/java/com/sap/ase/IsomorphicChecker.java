@@ -7,8 +7,8 @@ public class IsomorphicChecker {
     public boolean isIsomorphic(String s, String t) {
         if (!valid(s, t)) return false;
 
-        Map<String, String> charMapS2T = new HashMap<>();
-        Map<String, String> charMapT2S = new HashMap<>();
+        Map<Character, Character> charMapS2T = new HashMap<>();
+        Map<Character, Character> charMapT2S = new HashMap<>();
         char[] sArray = s.toCharArray();
         char[] tArray = t.toCharArray();
 
@@ -31,8 +31,8 @@ public class IsomorphicChecker {
         return true;
     }
 
-    private String charToString(char sChar) {
-        return String.valueOf(sChar);
+    private Character charToString(char sChar) {
+        return sChar;
     }
 
     private boolean valid(String s, String t) {
