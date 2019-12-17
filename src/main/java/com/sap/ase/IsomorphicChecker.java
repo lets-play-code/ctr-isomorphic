@@ -23,10 +23,8 @@ public class IsomorphicChecker {
                 return false;
             }
 
-            if (charMapS2T.get(sChar) == null) {
-                charMapS2T.put(sChar, tChar);
-                charMapT2S.put(tChar, sChar);
-            }
+            charMapS2T.put(sChar, tChar);
+            charMapT2S.put(tChar, sChar);
         }
         return true;
     }
