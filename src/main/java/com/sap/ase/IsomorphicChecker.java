@@ -11,8 +11,8 @@ public class IsomorphicChecker {
         Map<Character, Character> charMapT2S = new HashMap<>();
 
         for (int i = 0; i < s.length(); i++) {
-            char sChar = s.charAt(i);
-            char tChar = t.charAt(i);
+            Character sChar = s.charAt(i);
+            Character tChar = t.charAt(i);
 
             if (charMapS2T.get(sChar) != null && !charMapS2T.get(sChar).equals(tChar)) {
                 return false;
