@@ -21,11 +21,10 @@ public class IsomorphicChecker {
             if (charMapS2T.get(sChar) != null && !charMapS2T.get(sChar).equals(tChar)) {
                 return false;
             }
+            charMapS2T.put(sChar, tChar);
             if (charMapT2S.get(tChar) != null && !charMapT2S.get(tChar).equals(sChar)) {
                 return false;
             }
-
-            charMapS2T.put(sChar, tChar);
             charMapT2S.put(tChar, sChar);
             return true;
         }
