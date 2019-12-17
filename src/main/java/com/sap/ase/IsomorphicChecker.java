@@ -4,11 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IsomorphicChecker {
-    public boolean isIsomorphic(String s, String t) {
-        if (!valid(s, t)) return false;
-
+    class CharacterBinding {
         Map<Character, Character> charMapS2T = new HashMap<>();
         Map<Character, Character> charMapT2S = new HashMap<>();
+    }
+
+    public boolean isIsomorphic(String s, String t) {
+        if (!valid(s, t)) return false;
+        CharacterBinding characterBinding = new CharacterBinding();
+        Map<Character, Character> charMapS2T = characterBinding.charMapS2T;
+        Map<Character, Character> charMapT2S = characterBinding.charMapT2S;
+
 
         for (int i = 0; i < s.length(); i++) {
             Character sChar = s.charAt(i);
