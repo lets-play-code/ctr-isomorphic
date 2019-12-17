@@ -4,7 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class IsomorphicChecker {
-    class CharacterBinding {
+    public boolean isIsomorphic(String s, String t) {
+        if (!valid(s, t)) return false;
+        CharacterBinding characterBinding = new CharacterBinding();
+
+        for (int i = 0; i < s.length(); i++) {
+            Character sChar = s.charAt(i);
+            Character tChar = t.charAt(i);
+
+            if (!characterBinding.isBound(sChar, tChar)) return false;
+        }
+        return true;
+    }
+
+    static class CharacterBinding {
         Map<Character, Character> charMapS2T = new HashMap<>();
         Map<Character, Character> charMapT2S = new HashMap<>();
 
@@ -20,19 +33,6 @@ public class IsomorphicChecker {
             charMapT2S.put(tChar, sChar);
             return true;
         }
-    }
-
-    public boolean isIsomorphic(String s, String t) {
-        if (!valid(s, t)) return false;
-        CharacterBinding characterBinding = new CharacterBinding();
-
-        for (int i = 0; i < s.length(); i++) {
-            Character sChar = s.charAt(i);
-            Character tChar = t.charAt(i);
-
-            if (!characterBinding.isBound(sChar, tChar)) return false;
-        }
-        return true;
     }
 
     private boolean valid(String s, String t) {
