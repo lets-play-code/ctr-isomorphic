@@ -28,14 +28,14 @@ public class IsomorphicChecker {
         Map<Character, Character> anotherWayMapping = new HashMap<>();
 
         private boolean isBound(Character sChar, Character tChar) {
-            return oneWayBound(sChar, tChar, oneWayMapping) && oneWayBound(tChar, sChar, anotherWayMapping);
+            return isOneWayMapping(sChar, tChar, oneWayMapping) && isOneWayMapping(tChar, sChar, anotherWayMapping);
         }
 
-        private boolean oneWayBound(char sChar, char tChar, Map<Character, Character> charMapping) {
-            if (charMapping.containsKey(sChar) && charMapping.get(sChar) != tChar) {
+        private boolean isOneWayMapping(char from, char to, Map<Character, Character> charMapping) {
+            if (charMapping.containsKey(from) && charMapping.get(from) != to) {
                 return false;
             }
-            charMapping.put(sChar, tChar);
+            charMapping.put(from, to);
             return true;
         }
     }
