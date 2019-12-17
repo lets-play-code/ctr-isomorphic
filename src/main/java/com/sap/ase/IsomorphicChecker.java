@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class IsomorphicChecker {
     public boolean isIsomorphic(String s, String t) {
-        if (s == null || s == null)
+        if (s == null || t == null)
             return false;
         if (s == t || s.equals(t))
             return true;
