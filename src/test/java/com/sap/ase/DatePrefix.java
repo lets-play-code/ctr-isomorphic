@@ -28,17 +28,17 @@ public class DatePrefix {
         }
 
         private PrefixRange nextSinglePrefixRange(LocalDate from) {
-            LocalDate to = this.to;
-            while (!to.isBefore(from)) {
-                Optional<String> prefixIfAny = getPrefixIfAny(from, to);
+            LocalDate nextTo = this.to;
+            while (!nextTo.isBefore(from)) {
+                Optional<String> prefixIfAny = getPrefixIfAny(from, nextTo);
                 if (prefixIfAny.isPresent()) {
-                    PrefixRange prefixRange = new PrefixRange(from, to);
+                    PrefixRange prefixRange = new PrefixRange(from, nextTo);
                     prefixRange.prefixes.add(prefixIfAny.get());
                     return prefixRange;
                 }
-                to = to.minusDays(1);
+                nextTo = nextTo.minusDays(1);
             }
-            return new PrefixRange(from, to);
+            return new PrefixRange(from, nextTo);
         }
     }
 
