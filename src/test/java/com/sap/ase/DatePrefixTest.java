@@ -31,7 +31,11 @@ public class DatePrefixTest {
             Arguments.of(LocalDate.of(2021, 2, 20), LocalDate.of(2021, 2, 28),
                     Arrays.asList("2021-02-2"), "normal year Feb 2x"),
             Arguments.of(LocalDate.of(2020, 2, 20), LocalDate.of(2020, 2, 29),
-                    Arrays.asList("2020-02-2"), "leap year Feb 2x")
+                    Arrays.asList("2020-02-2"), "leap year Feb 2x"),
+            Arguments.of(LocalDate.of(2020, 2, 20), LocalDate.of(2020, 2, 28),
+                    Arrays.asList("2020-02-20","2020-02-21","2020-02-22","2020-02-23","2020-02-24"
+                            ,"2020-02-25","2020-02-26","2020-02-27","2020-02-28")
+                    , "leap year Feb not cover 29")
         );
     }
 
