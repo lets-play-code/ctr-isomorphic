@@ -26,7 +26,8 @@ public class DatePrefix {
     }
 
     private static String toPrefix(LocalDate from) {
-        return toString(from).substring(0, 9);
+        String string = toString(from);
+        return string.substring(0, string.length()-1);
     }
 
     private static boolean fulfilledPrefix(LocalDate from, LocalDate to) {
