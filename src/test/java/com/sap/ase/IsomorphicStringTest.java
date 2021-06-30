@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class IsomorphicStringTest {
 
-	@ParameterizedTest(name = "{0} and {1} are {2} isomorphic")
+	@ParameterizedTest(name = "{0} and {1} are isomorphic? {2}")
 	@MethodSource("args")
 	public void testSame(String s1, String s2, boolean expected) throws Exception {
 		assertEquals(expected, new IsomorphicChecker().isIsomorphic(s1, s2));
