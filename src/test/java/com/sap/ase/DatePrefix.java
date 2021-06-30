@@ -27,17 +27,15 @@ public class DatePrefix {
 
         List<String> result = range.prefixes;
         LocalDate prefixEnd = range.to;
-        while (!prefixEnd.isBefore(from)) {
-            Optional<String> prefixIfAny = getPrefixIfAny(from, prefixEnd);
+        while (!range.to.isBefore(from)) {
+            Optional<String> prefixIfAny = getPrefixIfAny(from, range.to);
             if (prefixIfAny.isPresent()) {
                 result.add(prefixIfAny.get());
-                range.to = prefixEnd;
                 return range;
             }
-            prefixEnd = prefixEnd.minusDays(1);
+            range.to = range.to.minusDays(1);
         }
         range.from = from;
-        range.to = prefixEnd;
         range.prefixes = result;
         return range;
     }
