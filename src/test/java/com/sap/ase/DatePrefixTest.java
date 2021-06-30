@@ -23,8 +23,7 @@ public class DatePrefixTest {
     @ParameterizedTest
     @MethodSource("testDatas")
     void testDatePrefix(LocalDate from, LocalDate to, List<String> prefixes) {
-        LocalDate date = LocalDate.of(2021, 6, 30);
-        assertEquals(Arrays.asList("2021-06-30"), DatePrefix.of(date, date));
+        assertEquals(prefixes, DatePrefix.of(from, to));
     }
 
     @Test
