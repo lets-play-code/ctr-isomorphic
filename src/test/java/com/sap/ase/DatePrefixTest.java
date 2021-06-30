@@ -25,7 +25,7 @@ public class DatePrefixTest {
     @Test
     void should_be_prefix_of_10_days_if_date_range_fully_covered() {
         LocalDate from = LocalDate.of(2021, 6, 1);
-        LocalDate to = LocalDate.of(2021, 6, 10);
+        LocalDate to = LocalDate.of(2021, 6, 9);
         assertEquals(Arrays.asList("2021-06-0"), DatePrefix.of(from, to));
     }
 }

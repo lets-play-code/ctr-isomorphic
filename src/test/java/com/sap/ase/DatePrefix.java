@@ -13,7 +13,7 @@ public class DatePrefix {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public static List<String> of(LocalDate from, LocalDate to) {
-        if (fulfilledPrefix(from, to)) {
+        if (!from.equals(to) && fulfilledPrefix(from, to)) {
             return Arrays.asList(toPrefix(from));
         }
         return Stream.iterate(from, date -> date.plusDays(1))
@@ -27,13 +27,13 @@ public class DatePrefix {
     }
 
     private static boolean fulfilledPrefix(LocalDate from, LocalDate to) {
-        String dateString1 = toString(from);
-        String dateString2 = toString(to);
-        String dateStringBefore1 = toString(from.minusDays(1));
-        String dateStringAfter2 = toString(to.plusDays(1));
-//        if (toPrefix(from).equals(toPrefix(to) &&
-//                !toPrefix(from.minusDays(1)).equals(toPrefix(to.plusDays(1)))))
-        return daysBetween(from, to) == 10;
+        if (toPrefix(from).equals(toPrefix(to))
+                && !toPrefix(from.minusDays(1)).equals(toPrefix(from))
+                && !toPrefix(to.plusDays(1)).equals(toPrefix(to))
+        ) {
+            return true;
+        }
+        return false;
     }
 
     private static long daysBetween(LocalDate from, LocalDate to) {
