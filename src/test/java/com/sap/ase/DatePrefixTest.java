@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DatePrefixTest {
     private static Stream<Arguments> testDatas() {
         return Stream.of(
-            Arguments.of(LocalDate.of(2021, 6, 30), LocalDate.of(2021, 6, 30), Arrays.asList("2021-06-30"))
+            Arguments.of(LocalDate.of(2021, 6, 30), LocalDate.of(2021, 6, 30), Arrays.asList("2021-06-30"), "Single day")
         );
     }
 
