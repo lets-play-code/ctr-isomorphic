@@ -15,7 +15,7 @@ public class DatePrefix {
 
     public static List<String> of(LocalDate from, LocalDate to) {
         if (daysBetween(from, to) == 10) {
-            return Arrays.asList(/*toDateString(from).substring(0, 9)*/"2021-06-0");
+            return Arrays.asList(toDateString(from).substring(0, 9));
         }
         return Stream.iterate(from, date -> date.plusDays(1))
                 .limit(daysBetween(from, to))
