@@ -20,20 +20,21 @@ public class DatePrefix {
         }
 
         List<String> result = new ArrayList<>();
-        for (LocalDate prefixEnd = to; prefixEnd.isAfter(from); prefixEnd = prefixEnd.minusDays(1)) {
+        LocalDate prefixEnd = to;
+        while (!prefixEnd.isBefore(from)) {
 //            result.addAll(getPrefixIfAny(from, prefixEnd));
+            List<String> prefixIfAny = getPrefixIfAny(from, prefixEnd);
+            if (!prefixIfAny.isEmpty()) {
+                result.addAll(prefixIfAny);
+                break;
+            }
+            prefixEnd = prefixEnd.minusDays(1);
+        }
+        if (prefixEnd.isBefore(to)) {
+            result.addAll(listDays(prefixEnd.plusDays(1), to));
         }
 
-        List<String> trimLength1 = getPrefixIfAny(from, to);
-        if (!trimLength1.isEmpty()) return trimLength1;
-        List<String> trimLength = getPrefixIfAny(from, to.minusDays(1));
-        if (!trimLength.isEmpty()) {
-            List<String> temp = new ArrayList<>(trimLength);
-            temp.addAll(listDays(to, to));
-            return temp;
-        }
-
-        return listDays(from, to);
+        return result;
     }
 
     private static List<String> listDays(LocalDate from, LocalDate to) {
