@@ -27,9 +27,10 @@ public class DatePrefix {
     }
 
     private static boolean fulfilledPrefix(LocalDate from, LocalDate to) {
-        return toPrefix(from).equals(toPrefix(to))
-                && !toPrefix(from.minusDays(1)).equals(toPrefix(from))
-                && !toPrefix(to.plusDays(1)).equals(toPrefix(to));
+        String prefix = toPrefix(from);
+        return toPrefix(to).equals(prefix)
+                && !toPrefix(from.minusDays(1)).equals(prefix)
+                && !toPrefix(to.plusDays(1)).equals(prefix);
     }
 
     private static long daysBetween(LocalDate from, LocalDate to) {
