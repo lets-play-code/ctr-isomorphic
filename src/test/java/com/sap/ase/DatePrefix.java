@@ -3,10 +3,7 @@ package com.sap.ase;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,9 +19,9 @@ public class DatePrefix {
         List<String> result = new ArrayList<>();
         LocalDate prefixEnd = to;
         while (!prefixEnd.isBefore(from)) {
-            List<String> prefixIfAny = getPrefixIfAny(from, prefixEnd);
-            if (!prefixIfAny.isEmpty()) {
-                result.addAll(prefixIfAny);
+            Optional<String> prefixIfAny = getPrefixIfAny(from, prefixEnd);
+            if (prefixIfAny.isPresent()) {
+                result.add(prefixIfAny.get());
                 break;
             }
             prefixEnd = prefixEnd.minusDays(1);
@@ -43,13 +40,13 @@ public class DatePrefix {
                 .collect(Collectors.toList());
     }
 
-    private static List<String> getPrefixIfAny(LocalDate from, LocalDate to) {
+    private static Optional<String> getPrefixIfAny(LocalDate from, LocalDate to) {
         for (int trimLength = 1; trimLength <= 5; trimLength++) {
             if (fulfilledPrefix(from, to, trimLength)) {
-                return Arrays.asList(toPrefix(from, trimLength));
+                return Optional.of(toPrefix(from, trimLength));
             }
         }
-        return Collections.emptyList();
+        return Optional.empty();
     }
 
     private static String toPrefix(LocalDate from, int trimLength) {
