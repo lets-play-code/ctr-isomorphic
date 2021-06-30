@@ -13,7 +13,10 @@ public class DatePrefix {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public static List<String> of(LocalDate from, LocalDate to) {
-        if (!from.equals(to) && fulfilledPrefix(from, to)) {
+        if (from.equals(to)) {
+            return Arrays.asList(toString(from));
+        }
+        if (fulfilledPrefix(from, to)) {
             return Arrays.asList(toPrefix(from));
         }
         return Stream.iterate(from, date -> date.plusDays(1))
