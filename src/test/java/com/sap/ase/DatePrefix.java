@@ -19,6 +19,9 @@ public class DatePrefix {
         if (fulfilledPrefix(from, to, 1)) {
             return Arrays.asList(toPrefix(from, 1));
         }
+        if (fulfilledPrefix(from, to, 2)) {
+            return Arrays.asList(toPrefix(from, 2));
+        }
         return Stream.iterate(from, date -> date.plusDays(1))
                 .limit(daysBetween(from, to))
                 .map(DatePrefix::toString)
