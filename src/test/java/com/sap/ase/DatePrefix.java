@@ -20,20 +20,20 @@ public class DatePrefix {
             this.from = from;
             this.to = to;
         }
-    }
 
-    private static PrefixRange nextPrefixRange(LocalDate from, LocalDate to) {
-        PrefixRange range = new PrefixRange(from, to);
+        private static PrefixRange nextPrefixRange(LocalDate from, LocalDate to) {
+            PrefixRange range = new PrefixRange(from, to);
 
-        while (!range.to.isBefore(from)) {
-            Optional<String> prefixIfAny = getPrefixIfAny(from, range.to);
-            if (prefixIfAny.isPresent()) {
-                range.prefixes.add(prefixIfAny.get());
-                return range;
+            while (!range.to.isBefore(from)) {
+                Optional<String> prefixIfAny = getPrefixIfAny(from, range.to);
+                if (prefixIfAny.isPresent()) {
+                    range.prefixes.add(prefixIfAny.get());
+                    return range;
+                }
+                range.to = range.to.minusDays(1);
             }
-            range.to = range.to.minusDays(1);
+            return range;
         }
-        return range;
     }
 
     public static List<String> of(LocalDate from, LocalDate to) {
@@ -42,7 +42,7 @@ public class DatePrefix {
         }
 
         List<String> result = new ArrayList<>();
-        PrefixRange prefixRange = nextPrefixRange(from, to);
+        PrefixRange prefixRange = PrefixRange.nextPrefixRange(from, to);
         result.addAll(prefixRange.prefixes);
         result.addAll(listDays(prefixRange.to.plusDays(1), to));
 
