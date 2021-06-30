@@ -14,11 +14,11 @@ public class DatePrefix {
         if (from.equals(to)) {
             return Arrays.asList(toDateString(from));
         }
-        List prefixs = new ArrayList();
+        List<String> prefixes = new ArrayList<>();
         for (LocalDate date = from; !date.isAfter(to); date = date.plusDays(1)) {
-            prefixs.add(toDateString(date));
+            prefixes.add(toDateString(date));
         }
-        return prefixs;
+        return prefixes;
     }
 
     private static String toDateString(LocalDate from) {
