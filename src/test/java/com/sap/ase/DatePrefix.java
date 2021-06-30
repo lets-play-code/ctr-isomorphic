@@ -16,8 +16,8 @@ public class DatePrefix {
         if (from.equals(to)) {
             return Arrays.asList(toString(from));
         }
-        if (fulfilledPrefix(from, to)) {
-            return Arrays.asList(toPrefix(from));
+        if (fulfilledPrefix(from, to, 1)) {
+            return Arrays.asList(toPrefix(from, 1));
         }
         return Stream.iterate(from, date -> date.plusDays(1))
                 .limit(daysBetween(from, to))
@@ -25,16 +25,16 @@ public class DatePrefix {
                 .collect(Collectors.toList());
     }
 
-    private static String toPrefix(LocalDate from) {
+    private static String toPrefix(LocalDate from, int trimLength) {
         String string = toString(from);
-        return string.substring(0, string.length()-1);
+        return string.substring(0, string.length() - trimLength);
     }
 
-    private static boolean fulfilledPrefix(LocalDate from, LocalDate to) {
-        String prefix = toPrefix(from);
-        return toPrefix(to).equals(prefix)
-                && !toPrefix(from.minusDays(1)).equals(prefix)
-                && !toPrefix(to.plusDays(1)).equals(prefix);
+    private static boolean fulfilledPrefix(LocalDate from, LocalDate to, int trimLength) {
+        String prefix = toPrefix(from, trimLength);
+        return toPrefix(to, trimLength).equals(prefix)
+                && !toPrefix(from.minusDays(trimLength), trimLength).equals(prefix)
+                && !toPrefix(to.plusDays(trimLength), trimLength).equals(prefix);
     }
 
     private static long daysBetween(LocalDate from, LocalDate to) {
