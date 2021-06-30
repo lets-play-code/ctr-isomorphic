@@ -26,9 +26,7 @@ public class DatePrefix {
             }
             prefixEnd = prefixEnd.minusDays(1);
         }
-        if (prefixEnd.isBefore(to)) {
             result.addAll(listDays(prefixEnd.plusDays(1), to));
-        }
 
         return result;
     }
