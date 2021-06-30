@@ -6,6 +6,7 @@ import java.util.List;
 
 public class DatePrefix {
     public static List<String> of(LocalDate from, LocalDate to) {
-        return Arrays.asList("2021-06-30");
+        String prefix = "2021-06-30";
+        return Arrays.asList(prefix);
     }
 }
