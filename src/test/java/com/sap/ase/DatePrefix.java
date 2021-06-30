@@ -21,6 +21,10 @@ public class DatePrefix {
             this.to = to;
         }
 
+        private LocalDate nextFrom() {
+            return to.plusDays(1);
+        }
+
         private PrefixRange nextSinglePrefixRange(LocalDate from) {
             LocalDate nextTo = this.to;
             while (!nextTo.isBefore(from)) {
@@ -45,7 +49,7 @@ public class DatePrefix {
         PrefixRange range = new PrefixRange(from, to);
         PrefixRange prefixRange = range.nextSinglePrefixRange(from);
         result.addAll(prefixRange.prefixes);
-        result.addAll(listDays(prefixRange.to.plusDays(1), to));
+        result.addAll(listDays(prefixRange.nextFrom(), to));
 
         return result;
     }
