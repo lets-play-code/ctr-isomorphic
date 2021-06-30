@@ -16,7 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DatePrefixTest {
     private static Stream<Arguments> testDatas() {
         return Stream.of(
-            Arguments.of(LocalDate.of(2021, 6, 30), LocalDate.of(2021, 6, 30), Arrays.asList("2021-06-30"), "Single day")
+            Arguments.of(LocalDate.of(2021, 6, 30), LocalDate.of(2021, 6, 30),
+                    Arrays.asList("2021-06-30"), "Single day"),
+            Arguments.of(LocalDate.of(2021, 6, 1), LocalDate.of(2021, 6, 3),
+                    Arrays.asList("2021-06-01", "2021-06-02", "2021-06-03"), "list all")
         );
     }
 
@@ -24,12 +27,6 @@ public class DatePrefixTest {
     @MethodSource("testDatas")
     void testDatePrefix(LocalDate from, LocalDate to, List<String> prefixes, String description) {
         assertEquals(prefixes, DatePrefix.of(from, to));
-    }
-
-    @Test
-    void should_be_date_string_for_single_date() {
-        LocalDate date = LocalDate.of(2021, 6, 30);
-        assertEquals(Arrays.asList("2021-06-30"), DatePrefix.of(date, date));
     }
 
     @Test
