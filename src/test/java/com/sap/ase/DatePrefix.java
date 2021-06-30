@@ -29,10 +29,14 @@ public class DatePrefix {
         List<String> trimLength = getPrefixIfAny(from, to.minusDays(1));
         if (!trimLength.isEmpty()) {
             List<String> temp = new ArrayList<>(trimLength);
-            temp.add(toString(to));
+            temp.addAll(listDays(to, to));
             return temp;
         }
 
+        return listDays(from, to);
+    }
+
+    private static List<String> listDays(LocalDate from, LocalDate to) {
         return Stream.iterate(from, date -> date.plusDays(1))
                 .limit(daysBetween(from, to))
                 .map(DatePrefix::toString)
