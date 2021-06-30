@@ -21,6 +21,11 @@ public class DatePrefix {
                 return Arrays.asList(toPrefix(from, trimLength));
             }
         }
+        for (int trimLength = 1; trimLength <= 5; trimLength++) {
+            if (fulfilledPrefix(from, to.minusDays(1), trimLength)) {
+                return Arrays.asList(toPrefix(from, trimLength), toString(to));
+            }
+        }
         return Stream.iterate(from, date -> date.plusDays(1))
                 .limit(daysBetween(from, to))
                 .map(DatePrefix::toString)

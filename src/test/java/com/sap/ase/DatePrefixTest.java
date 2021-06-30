@@ -43,7 +43,9 @@ public class DatePrefixTest {
             Arguments.of(LocalDate.of(2020, 10, 1), LocalDate.of(2020, 12, 31),
                     Arrays.asList("2020-1"), "Oct, Nov, Dec"),
             Arguments.of(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 12, 31),
-                    Arrays.asList("2020-"), "prefix for whole year")
+                    Arrays.asList("2020-"), "prefix for whole year"),
+            Arguments.of(LocalDate.of(2021, 6, 10), LocalDate.of(2021, 6, 20),
+                    Arrays.asList("2021-06-1", "2021-06-20"), "prefix and a single day")
         );
     }
 
