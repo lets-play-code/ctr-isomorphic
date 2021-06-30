@@ -17,6 +17,25 @@ public class DatePrefix {
         LocalDate to;
     }
 
+    private static PrefixRange nextPrefixRange(LocalDate from, LocalDate to) {
+        PrefixRange range = new PrefixRange();
+
+        List<String> result = new ArrayList<>();
+        LocalDate prefixEnd = to;
+        while (!prefixEnd.isBefore(from)) {
+            Optional<String> prefixIfAny = getPrefixIfAny(from, prefixEnd);
+            if (prefixIfAny.isPresent()) {
+                result.add(prefixIfAny.get());
+                break;
+            }
+            prefixEnd = prefixEnd.minusDays(1);
+        }
+        range.from = from;
+        range.to = prefixEnd;
+        range.prefixes = result;
+        return range;
+    }
+
     public static List<String> of(LocalDate from, LocalDate to) {
         if (from.equals(to)) {
             return Arrays.asList(toString(from));
