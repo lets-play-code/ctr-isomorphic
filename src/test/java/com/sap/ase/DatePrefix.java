@@ -11,6 +11,12 @@ public class DatePrefix {
 
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+    static class PrefixRange {
+        List<String> prefixes;
+        LocalDate from;
+        LocalDate to;
+    }
+
     public static List<String> of(LocalDate from, LocalDate to) {
         if (from.equals(to)) {
             return Arrays.asList(toString(from));
