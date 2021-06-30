@@ -16,6 +16,11 @@ public class DatePrefix {
         if (from.equals(to)) {
             return Arrays.asList(toString(from));
         }
+
+        for (LocalDate prefixEnd = to; prefixEnd.isAfter(from); prefixEnd = prefixEnd.minusDays(1)) {
+
+        }
+
         for (int trimLength = 1; trimLength <= 5; trimLength++) {
             if (fulfilledPrefix(from, to, trimLength)) {
                 return Arrays.asList(toPrefix(from, trimLength));
