@@ -6,9 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class DatePrefix {
+
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
     public static List<String> of(LocalDate from, LocalDate to) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String prefix = from.format(formatter);
+        String prefix = from.format(FORMATTER);
         return Arrays.asList(prefix);
     }
 }
