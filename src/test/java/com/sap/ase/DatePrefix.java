@@ -42,16 +42,9 @@ public class DatePrefix {
         }
 
         List<String> result = new ArrayList<>();
-        LocalDate prefixEnd = to;
-        while (!prefixEnd.isBefore(from)) {
-            Optional<String> prefixIfAny = getPrefixIfAny(from, prefixEnd);
-            if (prefixIfAny.isPresent()) {
-                result.add(prefixIfAny.get());
-                break;
-            }
-            prefixEnd = prefixEnd.minusDays(1);
-        }
-        result.addAll(listDays(prefixEnd.plusDays(1), to));
+        PrefixRange prefixRange = nextPrefixRange(from, to);
+        result.addAll(prefixRange.prefixes);
+        result.addAll(listDays(prefixRange.to.plusDays(1), to));
 
         return result;
     }
