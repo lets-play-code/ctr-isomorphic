@@ -24,6 +24,10 @@ public class DatePrefix {
         private static PrefixRange nextPrefixRange(LocalDate from, LocalDate to) {
             PrefixRange range = new PrefixRange(from, to);
 
+            return range.nextSinglePrefixRange(from, range);
+        }
+
+        private PrefixRange nextSinglePrefixRange(LocalDate from, PrefixRange range) {
             while (!range.to.isBefore(from)) {
                 Optional<String> prefixIfAny = getPrefixIfAny(from, range.to);
                 if (prefixIfAny.isPresent()) {
