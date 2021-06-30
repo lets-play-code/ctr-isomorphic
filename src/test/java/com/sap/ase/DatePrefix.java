@@ -19,8 +19,9 @@ public class DatePrefix {
             return Arrays.asList(toString(from));
         }
 
+        List<String> result = new ArrayList<>();
         for (LocalDate prefixEnd = to; prefixEnd.isAfter(from); prefixEnd = prefixEnd.minusDays(1)) {
-
+//            result.addAll(getPrefixIfAny(from, prefixEnd));
         }
 
         List<String> trimLength1 = getPrefixIfAny(from, to);
