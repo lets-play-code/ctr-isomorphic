@@ -37,7 +37,7 @@ public class DatePrefix {
                     prefixRange.prefixes.add(prefixIfAny.get());
                     return prefixRange;
                 }
-                this.to = this.to.minusDays(1);
+                to = to.minusDays(1);
             }
             return this;
         }
