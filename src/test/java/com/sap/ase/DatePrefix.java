@@ -35,8 +35,6 @@ public class DatePrefix {
             }
             range.to = range.to.minusDays(1);
         }
-        range.from = from;
-        range.prefixes = result;
         return range;
     }
 
