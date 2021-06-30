@@ -37,7 +37,9 @@ public class DatePrefixTest {
                             ,"2020-02-25","2020-02-26","2020-02-27","2020-02-28")
                     , "leap year Feb not cover 29"),
             Arguments.of(LocalDate.of(2020, 2, 1), LocalDate.of(2020, 2, 29),
-                    Arrays.asList("2020-02-"), "prefix for a month")
+                    Arrays.asList("2020-02-"), "prefix for a month"),
+            Arguments.of(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 9, 30),
+                    Arrays.asList("2020-0"), "1st 9 month")
         );
     }
 
