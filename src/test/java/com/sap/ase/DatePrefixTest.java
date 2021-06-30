@@ -39,7 +39,7 @@ public class DatePrefixTest {
             Arguments.of(LocalDate.of(2020, 2, 1), LocalDate.of(2020, 2, 29),
                     Arrays.asList("2020-02-"), "prefix for a month"),
             Arguments.of(LocalDate.of(2020, 1, 1), LocalDate.of(2020, 9, 30),
-                    Arrays.asList("2020-0"), "1st 9 month"),
+                    Arrays.asList("2020-0"), "1st 9 months"),
             Arguments.of(LocalDate.of(2020, 10, 1), LocalDate.of(2020, 12, 31),
                     Arrays.asList("2020-1"), "Oct, Nov, Dec")
         );
