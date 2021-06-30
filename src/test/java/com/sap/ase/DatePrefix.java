@@ -14,15 +14,25 @@ public class DatePrefix {
 
     public static List<String> of(LocalDate from, LocalDate to) {
         if (fulfilledPrefix(from, to)) {
-            return Arrays.asList(toDateString(from).substring(0, 9));
+            return Arrays.asList(toPrefix(from));
         }
         return Stream.iterate(from, date -> date.plusDays(1))
                 .limit(daysBetween(from, to))
-                .map(DatePrefix::toDateString)
+                .map(DatePrefix::toString)
                 .collect(Collectors.toList());
     }
 
+    private static String toPrefix(LocalDate from) {
+        return toString(from).substring(0, 9);
+    }
+
     private static boolean fulfilledPrefix(LocalDate from, LocalDate to) {
+        String dateString1 = toString(from);
+        String dateString2 = toString(to);
+        String dateStringBefore1 = toString(from.minusDays(1));
+        String dateStringAfter2 = toString(to.plusDays(1));
+//        if (toPrefix(from).equals(toPrefix(to) &&
+//                !toPrefix(from.minusDays(1)).equals(toPrefix(to.plusDays(1)))))
         return daysBetween(from, to) == 10;
     }
 
@@ -30,7 +40,7 @@ public class DatePrefix {
         return ChronoUnit.DAYS.between(from, to) + 1;
     }
 
-    private static String toDateString(LocalDate from) {
+    private static String toString(LocalDate from) {
         return from.format(FORMATTER);
     }
 }
