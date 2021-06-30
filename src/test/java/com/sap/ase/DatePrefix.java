@@ -24,20 +24,19 @@ public class DatePrefix {
         private static PrefixRange nextPrefixRange(LocalDate from, LocalDate to) {
             PrefixRange range = new PrefixRange(from, to);
 
-            return range.nextSinglePrefixRange(from, range);
+            return range.nextSinglePrefixRange(from);
         }
 
-        private PrefixRange nextSinglePrefixRange(LocalDate from, PrefixRange range) {
-            range = this;
-            while (!range.to.isBefore(from)) {
-                Optional<String> prefixIfAny = getPrefixIfAny(from, range.to);
+        private PrefixRange nextSinglePrefixRange(LocalDate from) {
+            while (!to.isBefore(from)) {
+                Optional<String> prefixIfAny = getPrefixIfAny(from, to);
                 if (prefixIfAny.isPresent()) {
-                    range.prefixes.add(prefixIfAny.get());
-                    return range;
+                    prefixes.add(prefixIfAny.get());
+                    return this;
                 }
-                range.to = range.to.minusDays(1);
+                to = to.minusDays(1);
             }
-            return range;
+            return this;
         }
     }
 
