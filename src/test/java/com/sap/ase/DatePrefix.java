@@ -2,6 +2,7 @@ package com.sap.ase;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,9 +12,16 @@ public class DatePrefix {
 
     public static List<String> of(LocalDate from, LocalDate to) {
         if (from.equals(to)) {
-            String prefix = from.format(FORMATTER);
-            return Arrays.asList(prefix);
+            return Arrays.asList(toDateString(from));
         }
-        return Arrays.asList("2021-06-01", "2021-06-02", "2021-06-03");
+        List prefixs = new ArrayList();
+        for (LocalDate date = from; !date.isAfter(to); date = date.plusDays(1)) {
+            prefixs.add(toDateString(date));
+        }
+        return prefixs;
+    }
+
+    private static String toDateString(LocalDate from) {
+        return from.format(FORMATTER);
     }
 }
