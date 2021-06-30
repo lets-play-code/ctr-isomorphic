@@ -27,7 +27,9 @@ public class DatePrefixTest {
             Arguments.of(LocalDate.of(2021, 6, 20), LocalDate.of(2021, 6, 29),
                     Arrays.asList("2021-06-2"), "3rd 10 days"),
             Arguments.of(LocalDate.of(2021, 7, 30), LocalDate.of(2021, 7, 31),
-                    Arrays.asList("2021-07-3"), "day 30 & 31")
+                    Arrays.asList("2021-07-3"), "day 30 & 31"),
+            Arguments.of(LocalDate.of(2021, 2, 20), LocalDate.of(2021, 2, 28),
+                    Arrays.asList("2021-02-2"), "normal year Feb 2x")
         );
     }
 
