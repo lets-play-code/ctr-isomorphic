@@ -20,7 +20,7 @@ public class DatePrefixTest {
         );
     }
 
-    @ParameterizedTest(name = "{3}: {arguments}")
+    @ParameterizedTest(name = "{index}-{3}: {arguments}")
     @MethodSource("testDatas")
     void testDatePrefix(LocalDate from, LocalDate to, List<String> prefixes, String description) {
         assertEquals(prefixes, DatePrefix.of(from, to));
