@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,13 +16,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class DatePrefixTest {
     private static Stream<Arguments> testDatas() {
         return Stream.of(
-                Arguments.of(LocalDate.of(2021, 6, 30), LocalDate.of(2021, 6, 30))
+            Arguments.of(LocalDate.of(2021, 6, 30), LocalDate.of(2021, 6, 30), Arrays.asList("2021-06-30"))
         );
     }
 
     @ParameterizedTest
     @MethodSource("testDatas")
-    void testDatePrefix(LocalDate from, LocalDate to) {
+    void testDatePrefix(LocalDate from, LocalDate to, List<String> prefixes) {
         LocalDate date = LocalDate.of(2021, 6, 30);
         assertEquals(Arrays.asList("2021-06-30"), DatePrefix.of(date, date));
     }
