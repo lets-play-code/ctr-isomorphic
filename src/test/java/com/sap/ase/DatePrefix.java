@@ -3,7 +3,9 @@ package com.sap.ase;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -21,20 +23,28 @@ public class DatePrefix {
 
         }
 
+        List<String> trimLength1 = getPrefixIfAny(from, to);
+        if (!trimLength1.isEmpty()) return trimLength1;
+        List<String> trimLength = getPrefixIfAny(from, to.minusDays(1));
+        if (!trimLength.isEmpty()) {
+            List<String> temp = new ArrayList<>(trimLength);
+            temp.add(toString(to));
+            return temp;
+        }
+
+        return Stream.iterate(from, date -> date.plusDays(1))
+                .limit(daysBetween(from, to))
+                .map(DatePrefix::toString)
+                .collect(Collectors.toList());
+    }
+
+    private static List<String> getPrefixIfAny(LocalDate from, LocalDate to) {
         for (int trimLength = 1; trimLength <= 5; trimLength++) {
             if (fulfilledPrefix(from, to, trimLength)) {
                 return Arrays.asList(toPrefix(from, trimLength));
             }
         }
-        for (int trimLength = 1; trimLength <= 5; trimLength++) {
-            if (fulfilledPrefix(from, to.minusDays(1), trimLength)) {
-                return Arrays.asList(toPrefix(from, trimLength), toString(to));
-            }
-        }
-        return Stream.iterate(from, date -> date.plusDays(1))
-                .limit(daysBetween(from, to))
-                .map(DatePrefix::toString)
-                .collect(Collectors.toList());
+        return Collections.emptyList();
     }
 
     private static String toPrefix(LocalDate from, int trimLength) {
