@@ -12,21 +12,27 @@ public class DatePrefix {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     static class PrefixRange {
-        List<String> prefixes;
+        List<String> prefixes = new ArrayList<>();
         LocalDate from;
         LocalDate to;
+
+        public PrefixRange(LocalDate from, LocalDate to) {
+            this.from = from;
+            this.to = to;
+        }
     }
 
     private static PrefixRange nextPrefixRange(LocalDate from, LocalDate to) {
-        PrefixRange range = new PrefixRange();
+        PrefixRange range = new PrefixRange(from, to);
 
-        List<String> result = new ArrayList<>();
-        LocalDate prefixEnd = to;
+        List<String> result = range.prefixes;
+        LocalDate prefixEnd = range.to;
         while (!prefixEnd.isBefore(from)) {
             Optional<String> prefixIfAny = getPrefixIfAny(from, prefixEnd);
             if (prefixIfAny.isPresent()) {
                 result.add(prefixIfAny.get());
-                break;
+                range.to = prefixEnd;
+                return range;
             }
             prefixEnd = prefixEnd.minusDays(1);
         }
