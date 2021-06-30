@@ -33,8 +33,9 @@ public class DatePrefix {
                 if (to.isBefore(from)) break;
                 Optional<String> prefixIfAny = getPrefixIfAny(from, to);
                 if (prefixIfAny.isPresent()) {
-                    prefixes.add(prefixIfAny.get());
-                    return this;
+                    PrefixRange prefixRange = new PrefixRange(from, to);
+                    prefixRange.prefixes.add(prefixIfAny.get());
+                    return prefixRange;
                 }
                 this.to = this.to.minusDays(1);
             }
