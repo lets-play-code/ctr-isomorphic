@@ -19,7 +19,9 @@ public class DatePrefixTest {
             Arguments.of(LocalDate.of(2021, 6, 30), LocalDate.of(2021, 6, 30),
                     Arrays.asList("2021-06-30"), "Single day"),
             Arguments.of(LocalDate.of(2021, 6, 1), LocalDate.of(2021, 6, 3),
-                    Arrays.asList("2021-06-01", "2021-06-02", "2021-06-03"), "list all")
+                    Arrays.asList("2021-06-01", "2021-06-02", "2021-06-03"), "list all"),
+            Arguments.of(LocalDate.of(2021, 6, 1), LocalDate.of(2021, 6, 9),
+                    Arrays.asList("2021-06-0"), "1st 9 days")
         );
     }
 
@@ -27,13 +29,6 @@ public class DatePrefixTest {
     @MethodSource("testDatas")
     void testDatePrefix(LocalDate from, LocalDate to, List<String> prefixes, String description) {
         assertEquals(prefixes, DatePrefix.of(from, to));
-    }
-
-    @Test
-    void should_list_all_date_if_date_range_dont_cover_a_prefix() {
-        LocalDate from = LocalDate.of(2021, 6, 1);
-        LocalDate to = LocalDate.of(2021, 6, 3);
-        assertEquals(Arrays.asList("2021-06-01", "2021-06-02", "2021-06-03"), DatePrefix.of(from, to));
     }
 
     @Test
