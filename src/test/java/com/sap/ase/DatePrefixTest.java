@@ -21,7 +21,9 @@ public class DatePrefixTest {
             Arguments.of(LocalDate.of(2021, 6, 1), LocalDate.of(2021, 6, 3),
                     Arrays.asList("2021-06-01", "2021-06-02", "2021-06-03"), "list all"),
             Arguments.of(LocalDate.of(2021, 6, 1), LocalDate.of(2021, 6, 9),
-                    Arrays.asList("2021-06-0"), "1st 9 days")
+                    Arrays.asList("2021-06-0"), "1st 9 days"),
+            Arguments.of(LocalDate.of(2021, 6, 10), LocalDate.of(2021, 6, 19),
+                    Arrays.asList("2021-06-1"), "2st 10 days")
         );
     }
 
@@ -31,10 +33,4 @@ public class DatePrefixTest {
         assertEquals(prefixes, DatePrefix.of(from, to));
     }
 
-    @Test
-    void should_be_prefix_of_10_days_if_date_range_fully_covered() {
-        LocalDate from = LocalDate.of(2021, 6, 1);
-        LocalDate to = LocalDate.of(2021, 6, 9);
-        assertEquals(Arrays.asList("2021-06-0"), DatePrefix.of(from, to));
-    }
 }
