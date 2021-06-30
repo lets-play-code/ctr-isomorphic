@@ -22,7 +22,6 @@ public class DatePrefix {
         List<String> result = new ArrayList<>();
         LocalDate prefixEnd = to;
         while (!prefixEnd.isBefore(from)) {
-//            result.addAll(getPrefixIfAny(from, prefixEnd));
             List<String> prefixIfAny = getPrefixIfAny(from, prefixEnd);
             if (!prefixIfAny.isEmpty()) {
                 result.addAll(prefixIfAny);
