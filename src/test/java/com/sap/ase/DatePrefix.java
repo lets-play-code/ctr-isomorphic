@@ -13,8 +13,8 @@ public class DatePrefix {
 
     static class PrefixRange {
         List<String> prefixes = new ArrayList<>();
-        LocalDate from;
-        LocalDate to;
+        final LocalDate from;
+        final LocalDate to;
 
         public PrefixRange(LocalDate from, LocalDate to) {
             this.from = from;
