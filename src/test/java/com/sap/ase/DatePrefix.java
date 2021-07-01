@@ -42,6 +42,10 @@ public class DatePrefix {
             }
             return new PrefixRange(from, nextTo);
         }
+
+        public PrefixRange nextDaysRange(LocalDate from, LocalDate to) {
+            return new PrefixRange(from, from.minusDays(1));
+        }
     }
 
     public static List<String> of(LocalDate from, LocalDate to) {
@@ -50,7 +54,8 @@ public class DatePrefix {
         }
 
         List<String> result = new ArrayList<>();
-        PrefixRange prefixRange = new PrefixRange(from, to).nextSinglePrefixRange(from, to);
+        PrefixRange prefixRange = new PrefixRange(from, to).nextDaysRange(from, to);
+        prefixRange = prefixRange.nextSinglePrefixRange(prefixRange.nextFrom(), to);
         while (!prefixRange.isEmpty()) {
             result.addAll(prefixRange.prefixes);
             prefixRange = prefixRange.nextSinglePrefixRange(prefixRange.nextFrom(), to);
