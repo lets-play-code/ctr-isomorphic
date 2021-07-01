@@ -22,7 +22,7 @@ public class DatePrefix {
         }
 
         private boolean isEmpty() {
-            return prefixes.isEmpty();
+            return to.isBefore(from);
         }
 
         private LocalDate nextFrom() {
