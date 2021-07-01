@@ -50,7 +50,7 @@ public class DatePrefix {
         PrefixRange prefixRange = range.nextSinglePrefixRange(from);
         while (!prefixRange.prefixes.isEmpty()) {
             result.addAll(prefixRange.prefixes);
-            prefixRange = range.nextSinglePrefixRange(from);
+            prefixRange = prefixRange.nextSinglePrefixRange(from);
         }
         result.addAll(listDays(prefixRange.nextFrom(), to));
         return result;
