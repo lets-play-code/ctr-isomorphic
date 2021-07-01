@@ -48,8 +48,8 @@ public class DatePrefixTest {
                     Arrays.asList("2021-06-1", "2021-06-20"), "prefix and a single day"),
             Arguments.of(LocalDate.of(2021, 6, 10), LocalDate.of(2021, 6, 29),
                     Arrays.asList("2021-06-1", "2021-06-2"), "2 prefixes"),
-            Arguments.of(LocalDate.of(2021, 6, 1), LocalDate.of(2021, 6, 19),
-                    Arrays.asList("2021-06-0", "2021-06-1"), "2 prefixes from 1st")
+            Arguments.of(LocalDate.of(2021, 6, 1), LocalDate.of(2021, 6, 29),
+                    Arrays.asList("2021-06-0", "2021-06-1", "2021-06-2"), "3 prefixes from 1st")
         );
     }
 
