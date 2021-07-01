@@ -51,7 +51,10 @@ public class DatePrefix {
         if (!prefixRange.prefixes.isEmpty()) {
             result.addAll(prefixRange.prefixes);
         }
-//        prefixRange = prefixRange.nextSinglePrefixRange(from);
+        if (!prefixRange.prefixes.isEmpty()) {
+            prefixRange = prefixRange.nextSinglePrefixRange(prefixRange.nextFrom());
+            result.addAll(prefixRange.prefixes);
+        }
         result.addAll(listDays(prefixRange.nextFrom(), to));
         return result;
     }
