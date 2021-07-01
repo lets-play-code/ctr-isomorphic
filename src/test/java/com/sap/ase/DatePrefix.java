@@ -48,9 +48,11 @@ public class DatePrefix {
         List<String> result = new ArrayList<>();
         PrefixRange range = new PrefixRange(from, to);
         PrefixRange prefixRange = range.nextSinglePrefixRange(from);
-        result.addAll(prefixRange.prefixes);
+        while (!prefixRange.prefixes.isEmpty()) {
+            result.addAll(prefixRange.prefixes);
+            prefixRange = range.nextSinglePrefixRange(from);
+        }
         result.addAll(listDays(prefixRange.nextFrom(), to));
-
         return result;
     }
 
