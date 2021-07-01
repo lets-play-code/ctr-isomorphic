@@ -76,8 +76,8 @@ public class DatePrefix {
         return Optional.empty();
     }
 
-    private static String toPrefix(LocalDate from, int trimLength) {
-        String string = toString(from);
+    private static String toPrefix(LocalDate date, int trimLength) {
+        String string = toString(date);
         return string.substring(0, string.length() - trimLength);
     }
 
