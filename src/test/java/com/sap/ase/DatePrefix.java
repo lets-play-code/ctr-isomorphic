@@ -95,10 +95,6 @@ public class DatePrefix {
         return string.substring(0, string.length() - trimLength);
     }
 
-    private static long daysBetween(LocalDate from, LocalDate to) {
-        return ChronoUnit.DAYS.between(from, to) + 1;
-    }
-
     private static String toString(LocalDate from) {
         return from.format(FORMATTER);
     }
@@ -131,6 +127,10 @@ public class DatePrefix {
                     .limit(daysBetween(from, to))
                     .map(DatePrefix::toString)
                     .collect(Collectors.toList());
+        }
+
+        private static long daysBetween(LocalDate from, LocalDate to) {
+            return ChronoUnit.DAYS.between(from, to) + 1;
         }
 
         private boolean isEmpty() {
