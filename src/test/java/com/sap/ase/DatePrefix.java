@@ -54,6 +54,16 @@ public class DatePrefix {
         }
     }
 
+    public static PrefixRange nextDaysRange(LocalDate from, LocalDate to) {
+        if (isNotRangeStart(from)) {
+            LocalDate nextRangeStartDay = getNextRangeEndDay(from, to);
+            PrefixRange prefixRange = new PrefixRange(from, nextRangeStartDay);
+            prefixRange.prefixes.addAll(listDays(from, nextRangeStartDay));
+            return prefixRange;
+        }
+        return new PrefixRange(from, from.minusDays(1));
+    }
+
     private static boolean isNotRangeStart(LocalDate from) {
         return toPrefix(from, 1).equals(toPrefix(from.minusDays(1), 1));
     }
@@ -77,7 +87,7 @@ public class DatePrefix {
         }
 
         List<String> result = new ArrayList<>();
-        PrefixRange prefixRange = new PrefixRange(from, to).nextDaysRange(from, to);
+        PrefixRange prefixRange = nextDaysRange(from, to);
         result.addAll(prefixRange.prefixes);
 
         prefixRange = prefixRange.nextSinglePrefixRange(prefixRange.nextFrom(), to);
