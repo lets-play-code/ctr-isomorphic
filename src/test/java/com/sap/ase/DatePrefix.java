@@ -22,7 +22,7 @@ public class DatePrefix {
     }
 
     private static PrefixRange nextRange(LocalDate from, LocalDate to) {
-        if (isNotRangeStart(from)) {
+        if (!isRangeStart(from)) {
             return nextDaysRange(from, to);
         }
         PrefixRange prefixRange = nextSinglePrefixRange(from, to);
@@ -71,10 +71,6 @@ public class DatePrefix {
             return to.plusDays(1);
         }
 
-    }
-
-    private static boolean isNotRangeStart(LocalDate day) {
-        return !isRangeStart(day);
     }
 
     private static boolean isRangeStart(LocalDate day) {
