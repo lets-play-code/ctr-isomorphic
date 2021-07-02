@@ -52,6 +52,8 @@ public class DatePrefixTest {
                     Arrays.asList("2021-05-3", "2021-06-0", "2021-06-10", "2021-06-11", "2021-06-12"), "2 prefixes cross month and 3 days"),
             Arguments.of(LocalDate.of(2021, 6, 17), LocalDate.of(2021, 6, 29),
                     Arrays.asList("2021-06-17","2021-06-18","2021-06-19", "2021-06-2"), "single days and prefix"),
+            Arguments.of(LocalDate.of(2021, 6, 18), LocalDate.of(2021, 6, 29),
+                    Arrays.asList("2021-06-18","2021-06-19", "2021-06-2"), "single days and prefix"),
             Arguments.of(LocalDate.of(2020, 12, 28), LocalDate.of(2022, 11, 2),
                     Arrays.asList("2020-12-28", "2020-12-29", "2020-12-3", "2021-","2022-0", "2022-10-", "2022-11-01", "2022-11-02"), "days, 10-days, year, 10-monthes, month, days"),
             Arguments.of(LocalDate.of(2021, 6, 20), LocalDate.of(2021, 7, 1),
