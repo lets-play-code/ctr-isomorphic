@@ -30,19 +30,24 @@ public class DatePrefix {
         }
 
         private PrefixRange nextSinglePrefixRange(LocalDate from, LocalDate to) {
-            LocalDate nextTo = to;
-            while (!nextTo.isBefore(from)) {
-                Optional<String> prefixIfAny = getPrefixIfAny(from, nextTo);
-                if (prefixIfAny.isPresent()) {
-                    PrefixRange prefixRange = new PrefixRange(from, nextTo);
-                    prefixRange.prefixes.add(prefixIfAny.get());
-                    return prefixRange;
-                }
-                nextTo = nextTo.minusDays(1);
-            }
-            return new PrefixRange(from, nextTo);
+            return DatePrefix.nextSinglePrefixRange(from, to);
+
         }
 
+    }
+
+    private static PrefixRange nextSinglePrefixRange(LocalDate from, LocalDate to) {
+        LocalDate nextTo = to;
+        while (!nextTo.isBefore(from)) {
+            Optional<String> prefixIfAny = getPrefixIfAny(from, nextTo);
+            if (prefixIfAny.isPresent()) {
+                PrefixRange prefixRange = new PrefixRange(from, nextTo);
+                prefixRange.prefixes.add(prefixIfAny.get());
+                return prefixRange;
+            }
+            nextTo = nextTo.minusDays(1);
+        }
+        return new PrefixRange(from, nextTo);
     }
 
     public static PrefixRange nextDaysRange(LocalDate from, LocalDate to) {
