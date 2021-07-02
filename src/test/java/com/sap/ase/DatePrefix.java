@@ -78,6 +78,9 @@ public class DatePrefix {
             return nextDaysRange(from, to);
         }
         prefixRange = nextSinglePrefixRange(from, to);
+        if (prefixRange.isEmpty()) {
+            return nextDaysRange(from, to);
+        }
         return prefixRange;
     }
 
