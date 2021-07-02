@@ -107,8 +107,8 @@ public class DatePrefix {
             this.prefixes = prefixes;
         }
 
-        static DayRange days(LocalDate from, LocalDate to) {
-            return new DayRange(from, to, listDays(from, to));
+        static DayRange days(LocalDate from, LocalDate end) {
+            return new DayRange(from, end, listDays(from, end));
         }
 
         private static DayRange inPrefix(LocalDate from, LocalDate nextTo, String prefix) {
