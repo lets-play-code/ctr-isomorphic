@@ -122,7 +122,7 @@ public class DatePrefix {
 
         static PrefixRange daysRange(LocalDate from, LocalDate to) {
             PrefixRange prefixRange = new PrefixRange(from, to);
-            prefixRange.prefixes.addAll(listDays(from, to));
+            prefixRange.prefixes = listDays(from, to);
             return prefixRange;
         }
 
