@@ -41,9 +41,9 @@ public class DatePrefix {
                 prefixRange.prefixes.add(prefixIfAny.get());
                 return prefixRange;
             }
-            nextTo = nextTo.minusDays(1);
+            nextTo = oneDayBefore(nextTo);
         }
-        return new PrefixRange(from, from.minusDays(1));
+        return new PrefixRange(from, oneDayBefore(from));
     }
 
     public static PrefixRange nextDaysRange(LocalDate from, LocalDate to) {
@@ -65,12 +65,16 @@ public class DatePrefix {
     private static boolean fulfilledPrefix(LocalDate from, LocalDate to, int trimLength) {
         String prefix = toPrefix(from, trimLength);
         return toPrefix(to, trimLength).equals(prefix)
-                && !toPrefix(from.minusDays(1), trimLength).equals(prefix)
+                && !toPrefix(oneDayBefore(from), trimLength).equals(prefix)
                 && !toPrefix(to.plusDays(1), trimLength).equals(prefix);
     }
 
     private static boolean isRangeStart(LocalDate day) {
-        return !toPrefix(day, 1).equals(toPrefix(day.minusDays(1), 1));
+        return !toPrefix(day, 1).equals(toPrefix(oneDayBefore(day), 1));
+    }
+
+    private static LocalDate oneDayBefore(LocalDate day) {
+        return day.minusDays(1);
     }
 
     private static boolean isRangeEnd(LocalDate day) {
