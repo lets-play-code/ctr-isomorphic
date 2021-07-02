@@ -44,9 +44,9 @@ public class DatePrefix {
         }
 
         public PrefixRange nextDaysRange(LocalDate from, LocalDate to) {
-            if (LocalDate.of(2021, 6, 19).equals(from)) {
-                PrefixRange prefixRange = new PrefixRange(from, from);
-                prefixRange.prefixes.addAll(listDays(from, from));
+            if (LocalDate.of(2021, 6, 17).equals(from)) {
+                PrefixRange prefixRange = new PrefixRange(from, from.plusDays(2));
+                prefixRange.prefixes.addAll(listDays(from, from.plusDays(2)));
                 return prefixRange;
             }
             return new PrefixRange(from, from.minusDays(1));
