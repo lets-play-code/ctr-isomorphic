@@ -78,10 +78,12 @@ public class DatePrefix {
         }
 
         List<String> result = new ArrayList<>();
-        PrefixRange prefixRange = nextDaysRange(from, to);
-        result.addAll(prefixRange.prefixes);
-
-        prefixRange = nextSinglePrefixRange(prefixRange.nextFrom(), to);
+        PrefixRange prefixRange;
+        if (isNotRangeStart(from)) {
+            prefixRange = nextDaysRange(from, to);
+        } else {
+            prefixRange = nextSinglePrefixRange(from, to);
+        }
         while (!prefixRange.isEmpty()) {
             result.addAll(prefixRange.prefixes);
 
