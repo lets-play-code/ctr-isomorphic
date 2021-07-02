@@ -14,7 +14,7 @@ public class DatePrefix {
     public static List<String> of(LocalDate from, LocalDate to) {
         List<String> result = new ArrayList<>();
         PrefixRange prefixRange = nextRange(from, to);
-        while (!prefixRange.isEmpty()) {
+        while (prefixRange.isNotEmpty()) {
             result.addAll(prefixRange.prefixes);
             prefixRange = nextRange(prefixRange.nextFrom(), to);
         }
@@ -26,7 +26,7 @@ public class DatePrefix {
             return nextDaysRange(from, to);
         }
         PrefixRange prefixRange = nextPrefixRange(from, to);
-        if (!prefixRange.isEmpty()) {
+        if (prefixRange.isNotEmpty()) {
             return prefixRange;
         }
         return nextDaysRange(from, to);
@@ -133,8 +133,8 @@ public class DatePrefix {
             return ChronoUnit.DAYS.between(from, to) + 1;
         }
 
-        private boolean isEmpty() {
-            return to.isBefore(from);
+        private boolean isNotEmpty() {
+            return !from.isAfter(to);
         }
 
         private LocalDate nextFrom() {
