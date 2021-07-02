@@ -65,7 +65,7 @@ public class DatePrefix {
     private static boolean fulfilledPrefix(LocalDate from, LocalDate to, int trimLength) {
         String prefix = toPrefix(from, trimLength);
         return toPrefix(to, trimLength).equals(prefix)
-                && !toPrefix(from.minusDays(1), trimLength).equals(prefix)
+                && isRangeStart(from)
                 && !toPrefix(to.plusDays(1), trimLength).equals(prefix);
     }
 
