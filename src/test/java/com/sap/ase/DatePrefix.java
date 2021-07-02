@@ -81,10 +81,6 @@ public class DatePrefix {
     }
 
     public static List<String> of(LocalDate from, LocalDate to) {
-        if (from.equals(to)) {
-            return Arrays.asList(toString(from));
-        }
-
         List<String> result = new ArrayList<>();
         PrefixRange prefixRange = nextRange(from, to);
         while (!prefixRange.isEmpty()) {
