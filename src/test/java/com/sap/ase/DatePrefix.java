@@ -98,11 +98,11 @@ public class DatePrefix {
 
     static class DayRange {
         final List<String> prefixes;
-        final LocalDate from;
+        final LocalDate start;
         final LocalDate end;
 
-        public DayRange(LocalDate from, LocalDate end, List<String> prefixes) {
-            this.from = from;
+        public DayRange(LocalDate start, LocalDate end, List<String> prefixes) {
+            this.start = start;
             this.end = end;
             this.prefixes = prefixes;
         }
