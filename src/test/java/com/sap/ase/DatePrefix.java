@@ -25,11 +25,8 @@ public class DatePrefix {
         if (!isRangeStart(from)) {
             return nextDaysRange(from, to);
         }
-        DayRange dayRange = nextPrefixRange(from, to);
-        if (dayRange.isNotEmpty()) {
-            return dayRange;
-        }
-        return nextDaysRange(from, to);
+        DayRange prefixRange = nextPrefixRange(from, to);
+        return prefixRange.isNotEmpty() ? prefixRange : nextDaysRange(from, to);
     }
 
     public static DayRange nextDaysRange(LocalDate from, LocalDate to) {
