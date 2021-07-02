@@ -35,13 +35,13 @@ public class DatePrefix {
     }
 
     private static DayRange nextPrefixRange(LocalDate from, LocalDate to) {
-        LocalDate nextTo = to;
-        while (nextTo.isAfter(from)) {
-            Optional<String> prefixIfAny = getPrefixIfAny(from, nextTo);
+        LocalDate end = to;
+        while (end.isAfter(from)) {
+            Optional<String> prefixIfAny = getPrefixIfAny(from, end);
             if (prefixIfAny.isPresent()) {
-                return DayRange.inPrefix(from, nextTo, prefixIfAny.get());
+                return DayRange.inPrefix(from, end, prefixIfAny.get());
             }
-            nextTo = oneDayBefore(nextTo);
+            end = oneDayBefore(end);
         }
         return DayRange.empty(from);
     }
