@@ -1,6 +1,7 @@
-package com.sap.ase;
+package com.xp.tcr;
 
-import org.junit.jupiter.api.Test;
+import com.xp.tcr.DatePrefix;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -64,7 +65,7 @@ public class DatePrefixTest {
     @ParameterizedTest(name = "{index}-{3}: {arguments}")
     @MethodSource("testDatas")
     void testDatePrefix(LocalDate from, LocalDate to, List<String> prefixes, String description) {
-        assertEquals(prefixes, DatePrefix.of(from, to));
+        Assertions.assertEquals(prefixes, DatePrefix.of(from, to));
     }
 
 }

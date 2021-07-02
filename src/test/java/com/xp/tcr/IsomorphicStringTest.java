@@ -1,14 +1,14 @@
-package com.sap.ase;
+package com.xp.tcr;
 
 
-import org.junit.jupiter.api.Test;
+import com.xp.tcr.IsomorphicChecker;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static com.sap.ase.IsomorphicChecker.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class IsomorphicStringTest {
@@ -16,7 +16,7 @@ public class IsomorphicStringTest {
 	@ParameterizedTest(name = "{0} and {1} are isomorphic? {2}")
 	@MethodSource("args")
 	public void testSame(String s1, String s2, boolean expected) throws Exception {
-		assertEquals(expected, new IsomorphicChecker().isIsomorphic(s1, s2));
+		Assertions.assertEquals(expected, new IsomorphicChecker().isIsomorphic(s1, s2));
 	}
 
 	static Stream<Arguments> args () {
