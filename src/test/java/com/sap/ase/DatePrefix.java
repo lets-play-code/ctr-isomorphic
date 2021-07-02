@@ -71,7 +71,7 @@ public class DatePrefix {
     }
 
     private static LocalDate getNextRangeEndDay(LocalDate from, LocalDate to) {
-        for (LocalDate day = oneDayAfter(from); !day.isAfter(to); day = oneDayAfter(day)) {
+        for (LocalDate day = from; !day.isAfter(to); day = oneDayAfter(day)) {
             if (isRangeEnd(day)) {
                 return day;
             }
