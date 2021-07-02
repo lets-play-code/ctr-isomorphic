@@ -78,12 +78,10 @@ public class DatePrefix {
         }
 
         List<String> result = new ArrayList<>();
-        PrefixRange prefixRange;
-        prefixRange = getNextRange(from, to);
+        PrefixRange prefixRange = getNextRange(from, to);
         while (!prefixRange.isEmpty()) {
             result.addAll(prefixRange.prefixes);
-
-            prefixRange = nextSinglePrefixRange(prefixRange.nextFrom(), to);
+            prefixRange = getNextRange(prefixRange.nextFrom(), to);
         }
         result.addAll(listDays(prefixRange.nextFrom(), to));
         return result;
