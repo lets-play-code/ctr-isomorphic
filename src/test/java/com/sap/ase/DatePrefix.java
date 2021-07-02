@@ -42,7 +42,7 @@ public class DatePrefix {
         while (nextTo.isAfter(from)) {
             Optional<String> prefixIfAny = getPrefixIfAny(from, nextTo);
             if (prefixIfAny.isPresent()) {
-                return DayRange.prefixRange(from, nextTo, prefixIfAny.get());
+                return DayRange.inPrefix(from, nextTo, prefixIfAny.get());
             }
             nextTo = oneDayBefore(nextTo);
         }
@@ -114,7 +114,7 @@ public class DatePrefix {
             return new DayRange(from, to, listDays(from, to));
         }
 
-        private static DayRange prefixRange(LocalDate from, LocalDate nextTo, String prefix) {
+        private static DayRange inPrefix(LocalDate from, LocalDate nextTo, String prefix) {
             return new DayRange(from, nextTo, Collections.singletonList(prefix));
         }
 
