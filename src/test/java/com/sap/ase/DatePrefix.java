@@ -111,8 +111,8 @@ public class DatePrefix {
             return new DayRange(from, end, listDays(from, end));
         }
 
-        private static DayRange inPrefix(LocalDate from, LocalDate nextTo, String prefix) {
-            return new DayRange(from, nextTo, Collections.singletonList(prefix));
+        private static DayRange inPrefix(LocalDate from, LocalDate end, String prefix) {
+            return new DayRange(from, end, Collections.singletonList(prefix));
         }
 
         private static DayRange empty(LocalDate from) {
