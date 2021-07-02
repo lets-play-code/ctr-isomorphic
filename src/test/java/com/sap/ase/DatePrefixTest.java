@@ -56,8 +56,8 @@ public class DatePrefixTest {
                     Arrays.asList("2021-06-19", "2021-06-2"), "single day and prefix"),
             Arguments.of(LocalDate.of(2020, 12, 28), LocalDate.of(2022, 11, 2),
                     Arrays.asList("2020-12-28", "2020-12-29", "2020-12-3", "2021-","2022-0", "2022-10-", "2022-11-01", "2022-11-02"), "days, 10-days, year, 10-monthes, month, days"),
-            Arguments.of(LocalDate.of(2021, 6, 20), LocalDate.of(2021, 7, 1),
-                    Arrays.asList("2021-06-2","2021-06-30","2021-07-01"), "single day is no prefix")
+            Arguments.of(LocalDate.of(2021, 6, 20), LocalDate.of(2021, 7, 9),
+                    Arrays.asList("2021-06-2","2021-06-30","2021-07-0"), "single day is no prefix")
         );
     }
 
