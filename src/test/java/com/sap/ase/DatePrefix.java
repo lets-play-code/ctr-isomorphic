@@ -55,7 +55,7 @@ public class DatePrefix {
     }
 
     private static boolean isNotRangeStart(LocalDate from) {
-        return LocalDate.of(2021, 6, 17).equals(from);
+        return toPrefix(from, 1).equals(toPrefix(from.minusDays(1), 1));
     }
 
     private static LocalDate getNextRangeStartDay(LocalDate from) {
