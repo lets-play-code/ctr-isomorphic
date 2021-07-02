@@ -73,11 +73,10 @@ public class DatePrefix {
     }
 
     private static PrefixRange getNextRange(LocalDate from, LocalDate to) {
-        PrefixRange prefixRange;
         if (isNotRangeStart(from)) {
             return nextDaysRange(from, to);
         }
-        prefixRange = nextSinglePrefixRange(from, to);
+        PrefixRange prefixRange = nextSinglePrefixRange(from, to);
         if (prefixRange.isEmpty()) {
             return nextDaysRange(from, to);
         }
