@@ -66,7 +66,7 @@ public class DatePrefix {
         String prefix = toPrefix(from, trimLength);
         return toPrefix(to, trimLength).equals(prefix)
                 && !toPrefix(oneDayBefore(from), trimLength).equals(prefix)
-                && !toPrefix(to.plusDays(1), trimLength).equals(prefix);
+                && !toPrefix(oneDayAfter(to), trimLength).equals(prefix);
     }
 
     private static boolean isRangeStart(LocalDate day) {
@@ -78,11 +78,15 @@ public class DatePrefix {
     }
 
     private static boolean isRangeEnd(LocalDate day) {
-        return !toPrefix(day, 1).equals(toPrefix(day.plusDays(1), 1));
+        return !toPrefix(day, 1).equals(toPrefix(oneDayAfter(day), 1));
+    }
+
+    private static LocalDate oneDayAfter(LocalDate day) {
+        return day.plusDays(1);
     }
 
     private static LocalDate getNextRangeEndDay(LocalDate from, LocalDate to) {
-        for (LocalDate day = from.plusDays(1); !day.isAfter(to); day = day.plusDays(1)) {
+        for (LocalDate day = oneDayAfter(from); !day.isAfter(to); day = oneDayAfter(day)) {
             if (isRangeEnd(day)) {
                 return day;
             }
@@ -92,7 +96,7 @@ public class DatePrefix {
 
 
     private static List<String> listDays(LocalDate from, LocalDate to) {
-        return Stream.iterate(from, date -> date.plusDays(1))
+        return Stream.iterate(from, date -> oneDayAfter(date))
                 .limit(daysBetween(from, to))
                 .map(DatePrefix::toString)
                 .collect(Collectors.toList());
@@ -126,7 +130,7 @@ public class DatePrefix {
         }
 
         private LocalDate nextFrom() {
-            return to.plusDays(1);
+            return oneDayAfter(to);
         }
 
     }
