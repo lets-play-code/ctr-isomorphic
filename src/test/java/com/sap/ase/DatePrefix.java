@@ -53,6 +53,22 @@ public class DatePrefix {
         return prefixRange;
     }
 
+    private static Optional<String> getPrefixIfAny(LocalDate from, LocalDate to) {
+        for (int trimLength = 1; trimLength <= 5; trimLength++) {
+            if (fulfilledPrefix(from, to, trimLength)) {
+                return Optional.of(toPrefix(from, trimLength));
+            }
+        }
+        return Optional.empty();
+    }
+
+    private static boolean fulfilledPrefix(LocalDate from, LocalDate to, int trimLength) {
+        String prefix = toPrefix(from, trimLength);
+        return toPrefix(to, trimLength).equals(prefix)
+                && !toPrefix(from.minusDays(1), trimLength).equals(prefix)
+                && !toPrefix(to.plusDays(1), trimLength).equals(prefix);
+    }
+
     private static boolean isRangeStart(LocalDate day) {
         return !toPrefix(day, 1).equals(toPrefix(day.minusDays(1), 1));
     }
@@ -78,25 +94,9 @@ public class DatePrefix {
                 .collect(Collectors.toList());
     }
 
-    private static Optional<String> getPrefixIfAny(LocalDate from, LocalDate to) {
-        for (int trimLength = 1; trimLength <= 5; trimLength++) {
-            if (fulfilledPrefix(from, to, trimLength)) {
-                return Optional.of(toPrefix(from, trimLength));
-            }
-        }
-        return Optional.empty();
-    }
-
     private static String toPrefix(LocalDate date, int trimLength) {
         String string = toString(date);
         return string.substring(0, string.length() - trimLength);
-    }
-
-    private static boolean fulfilledPrefix(LocalDate from, LocalDate to, int trimLength) {
-        String prefix = toPrefix(from, trimLength);
-        return toPrefix(to, trimLength).equals(prefix)
-                && !toPrefix(from.minusDays(1), trimLength).equals(prefix)
-                && !toPrefix(to.plusDays(1), trimLength).equals(prefix);
     }
 
     private static long daysBetween(LocalDate from, LocalDate to) {
