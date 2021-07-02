@@ -74,8 +74,8 @@ public class DatePrefix {
     }
 
 
-    private static boolean isNotRangeStart(LocalDate from) {
-        return toPrefix(from, 1).equals(toPrefix(from.minusDays(1), 1));
+    private static boolean isNotRangeStart(LocalDate day) {
+        return toPrefix(day, 1).equals(toPrefix(day.minusDays(1), 1));
     }
 
     private static LocalDate getNextRangeEndDay(LocalDate from, LocalDate to) {
