@@ -11,6 +11,17 @@ public class DatePrefix {
 
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+    public static List<String> of(LocalDate from, LocalDate to) {
+        List<String> result = new ArrayList<>();
+        PrefixRange prefixRange = nextRange(from, to);
+        while (!prefixRange.isEmpty()) {
+            result.addAll(prefixRange.prefixes);
+            prefixRange = nextRange(prefixRange.nextFrom(), to);
+        }
+        return result;
+    }
+
+
     static class PrefixRange {
         List<String> prefixes = new ArrayList<>();
         final LocalDate from;
@@ -78,16 +89,6 @@ public class DatePrefix {
 
     private static boolean isRangeEnd(LocalDate day) {
         return !toPrefix(day, 1).equals(toPrefix(day.plusDays(1), 1));
-    }
-
-    public static List<String> of(LocalDate from, LocalDate to) {
-        List<String> result = new ArrayList<>();
-        PrefixRange prefixRange = nextRange(from, to);
-        while (!prefixRange.isEmpty()) {
-            result.addAll(prefixRange.prefixes);
-            prefixRange = nextRange(prefixRange.nextFrom(), to);
-        }
-        return result;
     }
 
     private static List<String> listDays(LocalDate from, LocalDate to) {
