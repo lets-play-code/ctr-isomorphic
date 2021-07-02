@@ -86,19 +86,19 @@ public class DatePrefix {
         return to;
     }
 
+    private static List<String> listDays(LocalDate from, LocalDate to) {
+        return Stream.iterate(from, date -> oneDayAfter(date))
+                .limit(daysBetween(from, to))
+                .map(DatePrefix::toString)
+                .collect(Collectors.toList());
+    }
+
     private static LocalDate oneDayBefore(LocalDate day) {
         return day.minusDays(1);
     }
 
     private static LocalDate oneDayAfter(LocalDate day) {
         return day.plusDays(1);
-    }
-
-    private static List<String> listDays(LocalDate from, LocalDate to) {
-        return Stream.iterate(from, date -> oneDayAfter(date))
-                .limit(daysBetween(from, to))
-                .map(DatePrefix::toString)
-                .collect(Collectors.toList());
     }
 
     private static String toPrefix(LocalDate date, int trimLength) {
