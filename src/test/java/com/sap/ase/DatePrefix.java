@@ -25,14 +25,14 @@ public class DatePrefix {
         if (!isRangeStart(from)) {
             return nextDaysRange(from, to);
         }
-        PrefixRange prefixRange = nextSinglePrefixRange(from, to);
+        PrefixRange prefixRange = nextPrefixRange(from, to);
         if (!prefixRange.isEmpty()) {
             return prefixRange;
         }
         return nextDaysRange(from, to);
     }
 
-    private static PrefixRange nextSinglePrefixRange(LocalDate from, LocalDate to) {
+    private static PrefixRange nextPrefixRange(LocalDate from, LocalDate to) {
         LocalDate nextTo = to;
         while (nextTo.isAfter(from)) {
             Optional<String> prefixIfAny = getPrefixIfAny(from, nextTo);
