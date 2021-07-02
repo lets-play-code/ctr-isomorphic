@@ -32,6 +32,13 @@ public class DatePrefix {
         return nextDaysRange(from, to);
     }
 
+    public static PrefixRange nextDaysRange(LocalDate from, LocalDate to) {
+        LocalDate nextRangeStartDay = getNextRangeEndDay(from, to);
+        PrefixRange prefixRange = new PrefixRange(from, nextRangeStartDay);
+        prefixRange.prefixes.addAll(listDays(from, nextRangeStartDay));
+        return prefixRange;
+    }
+
     private static PrefixRange nextPrefixRange(LocalDate from, LocalDate to) {
         LocalDate nextTo = to;
         while (nextTo.isAfter(from)) {
@@ -44,13 +51,6 @@ public class DatePrefix {
             nextTo = oneDayBefore(nextTo);
         }
         return new PrefixRange(from, oneDayBefore(from));
-    }
-
-    public static PrefixRange nextDaysRange(LocalDate from, LocalDate to) {
-        LocalDate nextRangeStartDay = getNextRangeEndDay(from, to);
-        PrefixRange prefixRange = new PrefixRange(from, nextRangeStartDay);
-        prefixRange.prefixes.addAll(listDays(from, nextRangeStartDay));
-        return prefixRange;
     }
 
     private static Optional<String> getPrefixIfAny(LocalDate from, LocalDate to) {
