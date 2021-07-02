@@ -33,7 +33,11 @@ public class DatePrefix {
     }
 
     public static PrefixRange nextDaysRange(LocalDate from, LocalDate to) {
-        LocalDate nextRangeStartDay = getNextRangeEndDay(from, to);
+        LocalDate rangeEndDay = getNextRangeEndDay(from, to);
+        return daysRange(from, rangeEndDay);
+    }
+
+    private static PrefixRange daysRange(LocalDate from, LocalDate nextRangeStartDay) {
         PrefixRange prefixRange = new PrefixRange(from, nextRangeStartDay);
         prefixRange.prefixes.addAll(listDays(from, nextRangeStartDay));
         return prefixRange;
