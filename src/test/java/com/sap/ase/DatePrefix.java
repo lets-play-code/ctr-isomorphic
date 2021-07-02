@@ -42,13 +42,17 @@ public class DatePrefix {
         while (nextTo.isAfter(from)) {
             Optional<String> prefixIfAny = getPrefixIfAny(from, nextTo);
             if (prefixIfAny.isPresent()) {
-                PrefixRange prefixRange = new PrefixRange(from, nextTo);
-                prefixRange.prefixes.add(prefixIfAny.get());
-                return prefixRange;
+                return prefixRange(from, nextTo, prefixIfAny.get());
             }
             nextTo = oneDayBefore(nextTo);
         }
         return new PrefixRange(from, oneDayBefore(from));
+    }
+
+    private static PrefixRange prefixRange(LocalDate from, LocalDate nextTo, String prefix) {
+        PrefixRange prefixRange = new PrefixRange(from, nextTo);
+        prefixRange.prefixes.add(prefix);
+        return prefixRange;
     }
 
     private static Optional<String> getPrefixIfAny(LocalDate from, LocalDate to) {
