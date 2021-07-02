@@ -99,11 +99,11 @@ public class DatePrefix {
     static class DayRange {
         final List<String> prefixes;
         final LocalDate from;
-        final LocalDate to;
+        final LocalDate end;
 
-        public DayRange(LocalDate from, LocalDate to, List<String> prefixes) {
+        public DayRange(LocalDate from, LocalDate end, List<String> prefixes) {
             this.from = from;
-            this.to = to;
+            this.end = end;
             this.prefixes = prefixes;
         }
 
@@ -135,7 +135,7 @@ public class DatePrefix {
         }
 
         private LocalDate nextFrom() {
-            return oneDayAfter(to);
+            return oneDayAfter(end);
         }
 
     }
