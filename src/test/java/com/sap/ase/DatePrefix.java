@@ -46,7 +46,7 @@ public class DatePrefix {
             }
             nextTo = oneDayBefore(nextTo);
         }
-        return DayRange.emptyRange(from);
+        return DayRange.empty(from);
     }
 
     private static Optional<String> getPrefixIfAny(LocalDate from, LocalDate to) {
@@ -118,7 +118,7 @@ public class DatePrefix {
             return new DayRange(from, nextTo, Collections.singletonList(prefix));
         }
 
-        private static DayRange emptyRange(LocalDate from) {
+        private static DayRange empty(LocalDate from) {
             return new DayRange(from, oneDayBefore(from), Collections.emptyList());
         }
 
