@@ -134,7 +134,7 @@ public class DatePrefix {
         }
 
         private boolean isNotEmpty() {
-            return !from.isAfter(to);
+            return !prefixes.isEmpty();
         }
 
         private LocalDate nextFrom() {
