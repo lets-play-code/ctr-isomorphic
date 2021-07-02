@@ -45,13 +45,17 @@ public class DatePrefix {
 
         public PrefixRange nextDaysRange(LocalDate from, LocalDate to) {
             if (LocalDate.of(2021, 6, 17).equals(from)) {
-                LocalDate nextRangeStartDay = from.plusDays(2);
+                LocalDate nextRangeStartDay = getNextRangeStartDay(from);
                 PrefixRange prefixRange = new PrefixRange(from, nextRangeStartDay);
                 prefixRange.prefixes.addAll(listDays(from, nextRangeStartDay));
                 return prefixRange;
             }
             return new PrefixRange(from, from.minusDays(1));
         }
+    }
+
+    private static LocalDate getNextRangeStartDay(LocalDate from) {
+        return from.plusDays(2);
     }
 
     public static List<String> of(LocalDate from, LocalDate to) {
