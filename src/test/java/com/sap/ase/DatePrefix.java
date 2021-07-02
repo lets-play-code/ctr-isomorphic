@@ -119,9 +119,9 @@ public class DatePrefix {
             return new DayRange(from, oneDayBefore(from), Collections.emptyList());
         }
 
-        private static List<String> listDays(LocalDate from, LocalDate to) {
-            return Stream.iterate(from, date -> oneDayAfter(date))
-                    .limit(daysBetween(from, to))
+        private static List<String> listDays(LocalDate from, LocalDate end) {
+            return Stream.iterate(from, DatePrefix::oneDayAfter)
+                    .limit(daysBetween(from, end))
                     .map(DatePrefix::toString)
                     .collect(Collectors.toList());
         }
