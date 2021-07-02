@@ -21,25 +21,15 @@ public class DatePrefix {
         return result;
     }
 
-
-    static class PrefixRange {
-        List<String> prefixes = new ArrayList<>();
-        final LocalDate from;
-        final LocalDate to;
-
-        public PrefixRange(LocalDate from, LocalDate to) {
-            this.from = from;
-            this.to = to;
+    private static PrefixRange nextRange(LocalDate from, LocalDate to) {
+        if (isNotRangeStart(from)) {
+            return nextDaysRange(from, to);
         }
-
-        private boolean isEmpty() {
-            return to.isBefore(from);
+        PrefixRange prefixRange = nextSinglePrefixRange(from, to);
+        if (!prefixRange.isEmpty()) {
+            return prefixRange;
         }
-
-        private LocalDate nextFrom() {
-            return to.plusDays(1);
-        }
-
+        return nextDaysRange(from, to);
     }
 
     private static PrefixRange nextSinglePrefixRange(LocalDate from, LocalDate to) {
@@ -63,16 +53,26 @@ public class DatePrefix {
         return prefixRange;
     }
 
-    private static PrefixRange nextRange(LocalDate from, LocalDate to) {
-        if (isNotRangeStart(from)) {
-            return nextDaysRange(from, to);
+    static class PrefixRange {
+        List<String> prefixes = new ArrayList<>();
+        final LocalDate from;
+        final LocalDate to;
+
+        public PrefixRange(LocalDate from, LocalDate to) {
+            this.from = from;
+            this.to = to;
         }
-        PrefixRange prefixRange = nextSinglePrefixRange(from, to);
-        if (!prefixRange.isEmpty()) {
-            return prefixRange;
+
+        private boolean isEmpty() {
+            return to.isBefore(from);
         }
-        return nextDaysRange(from, to);
+
+        private LocalDate nextFrom() {
+            return to.plusDays(1);
+        }
+
     }
+
 
     private static boolean isNotRangeStart(LocalDate from) {
         return toPrefix(from, 1).equals(toPrefix(from.minusDays(1), 1));
