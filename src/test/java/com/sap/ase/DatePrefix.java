@@ -46,7 +46,7 @@ public class DatePrefix {
             }
             nextTo = oneDayBefore(nextTo);
         }
-        return new PrefixRange(from, oneDayBefore(from));
+        return new PrefixRange(from, oneDayBefore(from), Collections.emptyList());
     }
 
     private static Optional<String> getPrefixIfAny(LocalDate from, LocalDate to) {
@@ -111,24 +111,23 @@ public class DatePrefix {
     }
 
     static class PrefixRange {
-        List<String> prefixes = new ArrayList<>();
+        final List<String> prefixes;
         final LocalDate from;
         final LocalDate to;
 
-        public PrefixRange(LocalDate from, LocalDate to) {
+        public PrefixRange(LocalDate from, LocalDate to, List<String> prefixes) {
             this.from = from;
             this.to = to;
+            this.prefixes = prefixes;
         }
 
         static PrefixRange daysRange(LocalDate from, LocalDate to) {
-            PrefixRange prefixRange = new PrefixRange(from, to);
-            prefixRange.prefixes = listDays(from, to);
+            PrefixRange prefixRange = new PrefixRange(from, to, listDays(from, to));
             return prefixRange;
         }
 
         private static PrefixRange prefixRange(LocalDate from, LocalDate nextTo, String prefix) {
-            PrefixRange prefixRange = new PrefixRange(from, nextTo);
-            prefixRange.prefixes = Collections.singletonList(prefix);
+            PrefixRange prefixRange = new PrefixRange(from, nextTo, Collections.singletonList(prefix));
             return prefixRange;
         }
 
