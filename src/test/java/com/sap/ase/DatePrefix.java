@@ -107,21 +107,21 @@ public class DatePrefix {
             this.prefixes = prefixes;
         }
 
-        static DayRange days(LocalDate from, LocalDate end) {
-            return new DayRange(from, end, listDays(from, end));
+        static DayRange days(LocalDate start, LocalDate end) {
+            return new DayRange(start, end, listDays(start, end));
         }
 
-        private static DayRange inPrefix(LocalDate from, LocalDate end, String prefix) {
-            return new DayRange(from, end, Collections.singletonList(prefix));
+        private static DayRange inPrefix(LocalDate start, LocalDate end, String prefix) {
+            return new DayRange(start, end, Collections.singletonList(prefix));
         }
 
-        private static DayRange empty(LocalDate from) {
-            return new DayRange(from, oneDayBefore(from), Collections.emptyList());
+        private static DayRange empty(LocalDate start) {
+            return new DayRange(start, oneDayBefore(start), Collections.emptyList());
         }
 
-        private static List<String> listDays(LocalDate from, LocalDate end) {
-            return Stream.iterate(from, DatePrefix::oneDayAfter)
-                    .limit(daysBetween(from, end))
+        private static List<String> listDays(LocalDate start, LocalDate end) {
+            return Stream.iterate(start, DatePrefix::oneDayAfter)
+                    .limit(daysBetween(start, end))
                     .map(DatePrefix::toString)
                     .collect(Collectors.toList());
         }
