@@ -77,10 +77,10 @@ public class DatePrefix {
             return nextDaysRange(from, to);
         }
         PrefixRange prefixRange = nextSinglePrefixRange(from, to);
-        if (prefixRange.isEmpty()) {
-            return nextDaysRange(from, to);
+        if (!prefixRange.isEmpty()) {
+            return prefixRange;
         }
-        return prefixRange;
+        return nextDaysRange(from, to);
     }
 
     public static List<String> of(LocalDate from, LocalDate to) {
