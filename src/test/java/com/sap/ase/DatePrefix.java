@@ -73,7 +73,7 @@ public class DatePrefix {
                 return day;
             }
         }
-        return from;
+        return to;
     }
 
     private static boolean isRangeEnd(LocalDate day) {
